@@ -1,6 +1,10 @@
 # modelComp799
-CS799: Model Trust and Understanding
-Site code for MTurk use to collect experiment data on model comprehensibility
+<p>
+  <b>CS799:</b> Model Trust and Understanding<br />
+  Site code for MTurk use to collect experiment data on model comprehensibility
+</p>
 
-Student: Jon Cyrus, Spring 2019
-Principal Investigator: Mike Gleicher (http://pages.cs.wisc.edu/~gleicher/)
+<p>
+  Student: Jon Cyrus, Spring 2019<br />
+  Principal Investigator: Mike Gleicher (http://pages.cs.wisc.edu/~gleicher/)
+</p>
