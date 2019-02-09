@@ -14,27 +14,22 @@
   if ($resultSet->num_rows == 0) {
     unset($uid, $query);
     $resultSet->free();
-    $_SESSION['message'] = "Something went wrong... no data was returned in querying admin credentails.";
+    $_SESSION['message'] = "Admin credentials failed: 43.";
     header("location: ../error.php");
     exit;
   }
 
   $admin_data = $resultSet->fetch_assoc();
   $resultSet->free();
-  if ($_POST['id'] === $admin_data['id']) {
-    if (password_verify($_POST['password'], $admin_data['password'])) {
-      $_SESSION['admin'] = 1;
-      header("location: ../index.php");
-    }
-    else {
-      $_SESSION['message'] = "Admin credentials failed: 43. ";
-      header("location: ../error.php");
-    }
+  if (password_verify($_POST['password'], $admin_data['password'])) {
+    $_SESSION['admin'] = 1;
+    header("location: ../index.php");
   }
   else {
-    $_SESSION['message'] = "Admin credentials failed: 44.";
-    $_SESSION['hash'] = password_hash('westdayton', PASSWORD_DEFAULT);
+    $_SESSION['message'] = "Admin credentials failed: 44. ";
     header("location: ../error.php");
   }
+  $_SESSION['retreived_pw'] = $admin_data['password'];
+  $_SESSION['hash'] = password_hash('westdayton', PASSWORD_DEFAULT);
   unset($admin_data);
 ?>
