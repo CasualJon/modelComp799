@@ -29,9 +29,8 @@
   //Validate that this connection is from MTurk and that this IP Address has not
   //previously completed a survey
   $refuri = parse_url($_SERVER['HTTP_REFERER']);
-//TODO - remove debug code
-$_SESSION['debug'] = $refuri;
   if($refuri['host'] != "mturk.com") {
+    $_SESSION['debug'] = "In refuri-host != mturk";
     //TODO require password to proceed - used for admin testing and evaluation
 
     //If password is invalid
