@@ -31,9 +31,6 @@ label.active {
   left: 2px;
   font-size: 14px;
 }
-label.active {
-  opacity: 0;
-}
 
 label.highlight {
   color: #ffffff;
@@ -64,7 +61,7 @@ input:focus, textarea:focus {
   max-width: 800px;
   margin: 40px auto;
   border-radius: 4px;
-  box-shadow: 0 10px 10px 0px rgba(180, 5, 12, 0.95);
+  box-shadow: 7px 7px rgba(180, 5, 12, 0.95);
 }
 
 .field-wrap {
