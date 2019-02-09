@@ -25,7 +25,7 @@
             <form action="./php_includes/admin_verify.php" method="post" autocomplete="off">
               <div class="field-wrap">
                 <label>Id</label>
-                <input type="email" required autocomplete="off" name="email" autofocus />
+                <input type="text" required autocomplete="off" name="email" autofocus />
               </div>
 
               <div class="field-wrap">
