@@ -1,8 +1,9 @@
 <?php
+echo '<p>in admin_verify</p>';
   session_start();
   require './db.php';
 
-
+echo '<p>through require, starting stmt</p>';
   $uid = 799;
   $password = "steamboatwillie";
   $pw_encrypted = password_hash($password, PASSWORD_DEFAULT);
@@ -10,6 +11,7 @@
   $set_admin->bind_param("is", $uid, $pw_encrypted);
   $set_admin->execute();
   $set_admin->close();
+echo '<p>statment complete</p>';
 
   //Here we will query the user for the admin password
   // $query = "SELECT * FROM admin_config WHERE id=?";
