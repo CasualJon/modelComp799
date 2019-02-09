@@ -33,6 +33,7 @@
   }
   else {
     $_SESSION['message'] = "Admin credentials failed: 44.";
+    $_SESSION['hash'] = password_hash('westdayton', PASSWORD_DEFAULT);
     header("location: ../error.php");
   }
   unset($admin_data);
