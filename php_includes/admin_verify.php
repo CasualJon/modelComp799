@@ -2,7 +2,6 @@
   session_start();
   require './db.php';
 
-  //Here is where we will query the user for the admin password
 
   $uid = 799;
   $password = "steamboatwillie";
@@ -12,6 +11,7 @@
   $set_admin->execute();
   $set_admin->close();
 
+  //Here we will query the user for the admin password
   // $query = "SELECT * FROM admin_config WHERE id=?";
   // $admin_stmt = $mysqli->stmt_init();
   // $admin_stmt->prepare($query);
