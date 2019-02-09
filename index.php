@@ -82,8 +82,8 @@
       </div> <!-- /row -->
 
       <div class="row">
-        <div class="col-md-4 offset-md-4">
-          <button class="btn btn-lg btn-outline-danger"><b style="font-size: 44px; width: 100%">CONTINUE<b></button>
+        <div class="col-md-12 text-center">
+          <button class="btn btn-lg btn-outline-danger"><b style="font-size: 38px%">CONTINUE<b></button>
         </div> <!-- /column -->
       </div> <!-- /row -->
 
