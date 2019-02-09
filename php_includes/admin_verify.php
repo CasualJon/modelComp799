@@ -1,7 +1,7 @@
 <?php
 echo '<p>in admin_verify</p>';
   session_start();
-  require './db.php';
+  require './php_includes/db.php';
 
 echo '<p>through require, starting stmt</p>';
   $uid = 799;
