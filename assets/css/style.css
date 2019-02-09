@@ -25,7 +25,7 @@ label {
   -webkit-transform: translateY(6px);
           transform: translateY(6px);
   left: 13px;
-  color: #FFFFFF;
+  color: #282728;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;
@@ -40,7 +40,7 @@ label.active {
 }
 
 label.highlight {
-  color: #ffffff;
+  color: #FFFFFF;
 }
 
 input, textarea {
