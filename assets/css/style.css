@@ -92,6 +92,11 @@ input:focus, textarea:focus {
   text-align: center;
 }
 
+.consent_text {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
 .btn-outline-danger {
   color: #FFFFFF;
   background-color: transparent;

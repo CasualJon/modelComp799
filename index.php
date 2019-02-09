@@ -77,18 +77,18 @@
           <h4>UW-Madison Graphics Group Research - Informed Consent</h4>
 
           <p>Infomred<br /><br />Consnet<br /><br />Statement</p>
-
           <br /><br />
 
           <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="consent_agree" name="consent_agree">
-          <label class="custom-control-label" style="color: rgba(255, 255, 255, 0.5)" for="consent_agree" id="consent_lbl">
-            I have read and agree to the terms of the UW-Madison Research Study Infomred Consent.
-          </label>
-        </div>
+            <input type="checkbox" class="custom-control-input" id="consent_agree" name="consent_agree">
+            <label class="custom-control-label consent_text" for="consent_agree" id="consent_lbl">
+              I have read and agree to the terms of the UW-Madison Research Study Infomred Consent.
+            </label>
+          </div>
 
         </div> <!-- /column -->
       </div> <!-- /row -->
+      <br /><br />
 
       <div class="row">
         <div class="col-md-12 text-center">
