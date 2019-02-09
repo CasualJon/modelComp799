@@ -29,6 +29,8 @@
   //Validate that this connection is from MTurk and that this IP Address has not
   //previously completed a survey
   $refuri = parse_url($_SERVER['HTTP_REFERER']);
+//TODO - remove debug code
+$_SESSION['debug'] = $refuri;
   if($refuri['host'] != "mturk.com") {
     //TODO require password to proceed - used for admin testing and evaluation
 
@@ -55,7 +57,7 @@
     $ip_stmt->close();
     $_SESSION['message'] = "We're sorry, but you can only complete this HIT survey once. This IP Address completed the survey on ".$worker_data['visit_date']." using MTurk Worker ID ".$worker_data['mturk_worker_id'];
     unset($ip_address, $query, $worker_data);
-    header("location: ./error");
+    header("location: ./error.php");
     exit;
   }
 
