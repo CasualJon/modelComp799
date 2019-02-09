@@ -29,7 +29,5 @@
     $_SESSION['message'] = "Admin credentials failed: 44. ";
     header("location: ../error.php");
   }
-  $_SESSION['retreived_pw'] = $admin_data['password'];
-  $_SESSION['hash'] = password_hash('westdayton', PASSWORD_DEFAULT);
   unset($admin_data);
 ?>

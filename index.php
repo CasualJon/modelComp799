@@ -66,11 +66,11 @@
           <p>Main Page!</p>
 
           <?php
-            // if ($_SESSION === 1) {
+            if ($_SESSION['admin'] === 1) {
               echo "<hr /><p>";
               var_dump($_SESSION);
               echo "<p>";
-            // }
+            }
           ?>
         </div> <!-- /column -->
       </div> <!-- /row -->
