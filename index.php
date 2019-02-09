@@ -78,12 +78,23 @@
 
           <p>Infomred<br /><br />Consnet<br /><br />Statement</p>
 
+          <br /><br />
+
+          <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="consent_agree" name="consent_agree">
+          <label class="custom-control-label" style="color: rgba(255, 255, 255, 0.5)" for="consent_agree" id="consent_lbl">
+            I have read and agree to the terms of the UW-Madison Research Study Infomred Consent.
+          </label>
+        </div>
+
         </div> <!-- /column -->
       </div> <!-- /row -->
 
       <div class="row">
         <div class="col-md-12 text-center">
-          <button class="btn btn-lg btn-outline-danger"><b style="font-size: 38px">CONTINUE<b></button>
+          <button class="btn btn-lg btn-outline-danger" id="continue_button" disabled>
+            <b style="font-size: 38px">CONTINUE<b>
+          </button>
         </div> <!-- /column -->
       </div> <!-- /row -->
 
