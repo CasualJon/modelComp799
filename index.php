@@ -2,7 +2,7 @@
   session_start();
   require './php_includes/db.php';
 
-  if (!isset($_SESSION['admin'])) {
+  if (!isset($_SESSION['admin'] || $_SESSION['admin'] == 0)) {
     $_SESSION['admin'] = 0;
 
     //If here, connection exists.
