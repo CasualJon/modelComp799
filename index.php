@@ -74,7 +74,18 @@
       ?>
       <div class="row">
         <div class="col-md-12">
-          <h4>Main Page</h4>
+          <h4>UW-Madison Graphics Group Research - Informed Consent</h4>
+
+          <p>Infomred<br /><br />Consnet<br /><br />Statement</p>
+
+        </div> <!-- /column -->
+      </div> <!-- /row -->
+
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <button class="btn btn-lg btn-outline-consnet">CONTINUE</button>
+        </div> <!-- /column -->
+      </div> <!-- /row -->
 
           <?php
             if ($_SESSION['admin'] === 1) {
@@ -87,5 +98,6 @@
       </div> <!-- /row -->
     </div> <!-- /container -->
     <?php include './assets/js/universal.html'; ?>
+    <script src="informed_consent.js"></script>
   </body>
 </html>

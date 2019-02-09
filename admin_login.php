@@ -33,7 +33,7 @@
                 <input type="password" required autocomplete="off" name="password" />
               </div>
 
-              <button type="submit" class="btn btn-dark" name="login"><i class="fas fa-arrow-right"></i></button>
+              <button type="submit" class="btn btn-dark" name="login" style="float: right"><i class="fas fa-arrow-right"></i></button>
             </form>
           </div> <!-- /form -->
 
