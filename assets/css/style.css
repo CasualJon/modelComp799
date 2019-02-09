@@ -17,6 +17,7 @@ body {
 p, hr {
   color: #FFFFFF;
   margin: 0px 0px 16px 0px;
+  font-size: 14px;
 }
 
 label {
