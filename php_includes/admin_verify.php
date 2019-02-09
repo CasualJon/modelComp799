@@ -1,6 +1,6 @@
 <?php
   session_start();
-  require './php_includes/db.php';
+  require './db.php';
 
   //Here is where we will query the user for the admin password
 
