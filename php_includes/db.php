@@ -27,20 +27,13 @@
 
   //If here, connection exists.
   //Validate that this connection is from MTurk and that this IP Address has not
-  //previously completed a survey
+  //previously completed a survey. If not from MTruk, check if user is admin
   $refuri = parse_url($_SERVER['HTTP_REFERER']);
   if($refuri['host'] != "mturk.com") {
-    $_SESSION['debug'] = "In refuri-host != mturk";
-    //TODO require password to proceed - used for admin testing and evaluation
-
-    //If password is invalid
-    if (false) {
-      unset($refuri);
-      $_SESSION['message'] = "We're sorry, but you can only complete the survey through Amazon's Mechanical Turk (<a href=\"https://www.mturk.com\">https://www.mturk.com</a>)";
-      header("location: ./error.php");
-      exit;
-    }
+    header("location: ./admin_login.php");
+    exit;
   }
+  
   $ip_address = $_SERVER['REMOTE_ADDR'];
   $query = "SELECT * FROM workers WHERE ip_address=?";
   $ip_stmt = $mysqli->stmt_init();
