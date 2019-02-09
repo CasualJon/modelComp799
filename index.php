@@ -83,7 +83,7 @@
 
       <div class="row">
         <div class="col-md-4 col-md-offset-4">
-          <button class="btn btn-lg btn-outline-consnet">CONTINUE</button>
+          <button class="btn btn-lg btn-outline-danger">CONTINUE</button>
         </div> <!-- /column -->
       </div> <!-- /row -->
 
