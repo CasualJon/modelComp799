@@ -50,5 +50,6 @@
     </div> <!-- /container -->
 
     <?php include './assets/js/universal.html'; ?>
+    <script src="./assets/js/admin_login.js"></script>
   </body>
 </html>
