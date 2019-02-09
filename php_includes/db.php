@@ -35,7 +35,7 @@
     //If password is invalid
     if (false) {
       unset($refuri);
-      $_SESSION['message'] = "We're sorry, but you can only complete the survey through Amazon's Mechanical Turk (<a href=\"https://www.mturk.com\">https://www.mturk.com</a>)"
+      $_SESSION['message'] = "We're sorry, but you can only complete the survey through Amazon's Mechanical Turk (<a href=\"https://www.mturk.com\">https://www.mturk.com</a>)";
       header("location: ./error.php");
       exit;
     }
