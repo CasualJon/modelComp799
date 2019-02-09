@@ -25,17 +25,13 @@ label {
   pointer-events: none;
   font-size: 22px;
 }
-label .req {
-  margin: 2px;
-  color: #01B0F1;
-}
 label.active {
   -webkit-transform: translateY(50px);
           transform: translateY(50px);
   left: 2px;
   font-size: 14px;
 }
-label.active .req {
+label.active {
   opacity: 0;
 }
 
