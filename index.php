@@ -64,7 +64,7 @@
       <?php
         if ($_SESSION['admin'] === 1) {
           echo '
-            <div class="row justify-content-center align-items center">
+            <div class="row">
               <div class="col-md-12 admin-banner">
                 <h2>Admin Mode</h2>
               </div>

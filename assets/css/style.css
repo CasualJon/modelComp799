@@ -14,13 +14,21 @@ body {
 }
 
 
-p, hr {
+p {
   color: #FFFFFF;
   margin: 0px 0px 16px 0px;
   font-size: 18px;
 }
 h1, h2, h3, h4, h5, h6 {
   color: #FFFFFF;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #FFFFFF;
+  margin: 1em 0;
+  padding: 0;
 }
 
 label {
