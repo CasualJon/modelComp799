@@ -21,6 +21,7 @@
 
   $admin_data = $resultSet->fetch_assoc();
   $resultSet->free();
+  //Here (for now) b/c private repo and PHP not displayed: 'westdayton'
   if (password_verify($_POST['password'], $admin_data['password'])) {
     $_SESSION['admin'] = 1;
     header("location: ../index.php");

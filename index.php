@@ -61,9 +61,20 @@
 
   <body>
     <div class="container">
+      <?php
+        if ($_SESSION['admin'] === 1) {
+          echo '
+            <div class="row justify-content-center align-items center">
+              <div class="col-md-12" style="background-color: rgba(197, 5, 12, 0.95)">
+                <h2>Admin Mode</h2>
+              </div>
+            </div>
+          ';
+        }
+      ?>
       <div class="row">
         <div class="col-md-12">
-          <p>Main Page!</p>
+          <h4>Main Page</h4>
 
           <?php
             if ($_SESSION['admin'] === 1) {

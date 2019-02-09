@@ -19,13 +19,16 @@ p, hr {
   margin: 0px 0px 16px 0px;
   font-size: 18px;
 }
+h1, h2, h3, h4, h5, h6 {
+  color: #FFFFFF;
+}
 
 label {
   position: absolute;
   -webkit-transform: translateY(6px);
           transform: translateY(6px);
   left: 13px;
-  color: #282728;
+  color: #FFFFFF;
   -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;

@@ -23,7 +23,8 @@
     <div class="container">
       <div class="row justify-content-center align-items-center">
         <div class="col-md-12">
-          <p>Error Page!</p>
+          <h4>Error</h4>
+          
           <div class="form">
             <?php
               if (isset($_SESSION['message'])) echo "<p>".$_SESSION['message']."</p>";
