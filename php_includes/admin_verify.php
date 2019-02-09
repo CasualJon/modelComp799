@@ -6,7 +6,7 @@
   $query = "SELECT * FROM admin_config WHERE id=?";
   $admin_stmt = $mysqli->stmt_init();
   $admin_stmt->prepare($query);
-  $admin_stmt->bind_param("i", $uid);
+  $admin_stmt->bind_param("i", $_POST['uid']);
   $admin_stmt->execute();
   $resultSet = $admin_stmt->get_result();
   $admin_stmt->close();
@@ -15,7 +15,7 @@
     unset($uid, $query);
     $resultSet->free();
     $_SESSION['message'] = "Something went wrong... no data was returned in querying admin credentails.";
-    header("location: ./error.php");
+    header("location: ../error.php");
     exit;
   }
 
@@ -24,16 +24,16 @@
   if ($_POST['id'] === $admin_data['id']) {
     if (password_verify($_POST['password'], $admin_data['password'])) {
       $_SESSION['admin'] = 1;
-      header("location: ./index.php");
+      header("location: ../index.php");
     }
     else {
-      $_SESSION['message'] = "Admin credentials failed.";
-      header("location: ./error.php");
+      $_SESSION['message'] = "Admin credentials failed: 43. ";
+      header("location: ../error.php");
     }
   }
   else {
-    $_SESSION['message'] = "Admin credentials failed.";
-    header("location: ./error.php");
+    $_SESSION['message'] = "Admin credentials failed: 44.";
+    header("location: ../error.php");
   }
   unset($admin_data);
 ?>
