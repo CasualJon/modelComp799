@@ -1,5 +1,7 @@
 <?php
+  //Session, control vars and database connection settings
   session_start();
+  require './control_variables.php';
   require './php_includes/db.php';
 
   if (!isset($_SESSION['admin']) || $_SESSION['admin'] == 0) {
@@ -9,7 +11,7 @@
     //Validate that this connection is from MTurk and that this IP Address has not
     //previously completed a survey. If not from MTruk, check if user is admin
     $refuri = parse_url($_SERVER['HTTP_REFERER']);
-    if($refuri['host'] != "mturk.com") {
+    if($refuri['host'] != $allowed_ext_refer) {
       header("location: ./admin_login.php");
       exit;
     }
@@ -94,9 +96,11 @@
 
       <div class="row">
         <div class="col-md-12 text-center">
-          <button class="btn btn-lg btn-outline-danger" id="continue_button" disabled>
-            <b style="font-size: 38px">CONTINUE<b>
-          </button>
+          <form action="./exp_explanation.php" method="post">
+            <button class="btn btn-lg btn-outline-danger" id="continue_button" disabled>
+              <b style="font-size: 38px">CONTINUE<b>
+            </button>
+          </form>
         </div> <!-- /column -->
       </div> <!-- /row -->
 
