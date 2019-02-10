@@ -12,7 +12,7 @@
     exit;
   }
   if (!isset($_POST['consent_agree']) || $_POST['consent_agree'] != 1) {
-    $_SESSION['message'] = "We do not see the infomred consent on file";
+    $_SESSION['message'] = "We do not see an Infomred Consent Agreement acknowledgement.";
     header("location: ./error.php");
     exit;
   }

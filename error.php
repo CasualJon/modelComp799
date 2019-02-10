@@ -1,9 +1,5 @@
 <?php
   session_start();
-  echo "<p>".$_SESSION['message']."</p>";
-
-  if (isset($_SESSION['debug'])) echo "<p>".$_SESSION['debug']."</p>";
-
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +20,7 @@
       <div class="row justify-content-center align-items-center">
         <div class="col-md-12">
           <h4>Error</h4>
-          
+
           <div class="form">
             <?php
               if (isset($_SESSION['message'])) echo "<p>".$_SESSION['message']."</p>";
