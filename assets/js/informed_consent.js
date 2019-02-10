@@ -14,4 +14,4 @@ function updateContinueButton() {
   else {
     continueButton.disabled = true;
   }
-}
+} //END updateContinueButton()
