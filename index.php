@@ -109,6 +109,6 @@
       </div> <!-- /row -->
     </div> <!-- /container -->
     <?php include './assets/js/universal.html'; ?>
-    <script src="informed_consent.js"></script>
+    <script src="./assets/informed_consent.js"></script>
   </body>
 </html>
