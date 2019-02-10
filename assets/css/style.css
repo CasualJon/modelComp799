@@ -31,7 +31,7 @@ hr {
   padding: 0;
 }
 
-label {
+label:not([for="consent_agree"]) {
   position: absolute;
   -webkit-transform: translateY(6px);
           transform: translateY(6px);
