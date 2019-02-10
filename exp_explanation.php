@@ -1,7 +1,7 @@
 <?php
   //Session, control vars and database connection settings
   session_start();
-  require './php_includes/control_variables';
+  require './php_includes/control_variables.php';
   require './php_includes/db.php';
 
   //Check that the connection proceeded to this page via index.php
