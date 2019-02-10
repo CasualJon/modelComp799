@@ -3,7 +3,6 @@
 html {
   overflow-y: scroll;
 }
-
 body {
   background-color: #282728;
   height: 100%;
@@ -12,8 +11,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -webkit-overflow-scrolling: touch;
 }
-
-
 p {
   color: #FFFFFF;
   margin: 0px 0px 16px 0px;
@@ -31,6 +28,8 @@ hr {
   padding: 0;
 }
 
+/******************************************************************************/
+/* Labels and Inputs */
 label:not([for="consent_agree"]) {
   position: absolute;
   -webkit-transform: translateY(6px);
@@ -73,6 +72,8 @@ input:focus, textarea:focus {
   border: 2px solid #FFFFFF;
 }
 
+/******************************************************************************/
+/* Admin Login and Banner */
 .form {
   background: rgba(197, 5, 12, 0.95);
   padding: 40px;
@@ -81,52 +82,57 @@ input:focus, textarea:focus {
   border-radius: 4px;
   box-shadow: 7px 7px 10px 2px rgba(150, 5, 12, 0.95);
 }
-
 .field-wrap {
   position: relative;
   margin-bottom: 40px;
 }
-
 .admin-banner {
   background: rgba(197, 5, 12, 0.95);
   text-align: center;
 }
 
+/******************************************************************************/
+/* Informed Consent Agreement Checkbox */
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: rgba(197, 5, 12, 0.95);
+}
+.custom-select:focus {
+  border-color: rgba(197, 5, 12, 0.95);
+  outline: 0;
+  box-shadow: inset 0 1px 2px rgba(150, 5, 12, 0.0.075), 0 0 5px rgba(150, 5, 12, 0.5);
+}
 .consent_text {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.5);
 }
 
+/******************************************************************************/
+/* CONTINUE Button */
 .btn-outline-danger {
   color: #FFFFFF;
   background-color: transparent;
   background-image: none;
   border-color: #FFFFFF;
 }
-
 .btn-outline-danger:not(:disabled):hover {
   color: #FFFFFF;
   background-color: rgba(197, 5, 12, 0.95);
   border-color: rgba(197, 5, 12, 0.95);
 }
-
 .btn-outline-danger:focus, .btn-outline-danger.focus {
   box-shadow: 0 0 0 0.2rem #FFFFFF;
 }
-
 .btn-outline-danger.disabled, .btn-outline-danger:disabled {
   color: #666666;
   background-color: transparent;
   border-color: #505050;
 }
-
 .btn-outline-danger:not(:disabled):not(.disabled):active, .btn-outline-danger:not(:disabled):not(.disabled).active,
 .show > .btn-outline-danger.dropdown-toggle {
   color: #FFFFFF;
   background-color: rgba(197, 5, 12, 0.95);
   border-color: rgba(197, 5, 12, 0.95);
 }
-
 .btn-outline-danger:not(:disabled):not(.disabled):active:focus, .btn-outline-danger:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-danger.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem #FFFFFF;
