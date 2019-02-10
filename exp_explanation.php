@@ -64,15 +64,14 @@
         </div> <!-- /column -->
       </div> <!-- /row -->
 
-          <?php
-            if ($_SESSION['admin'] === 1) {
-              echo "<hr /><p>";
-              var_dump($_SESSION);
-              echo "<p>";
-            }
-          ?>
-        </div> <!-- /column -->
-      </div> <!-- /row -->
+      <?php
+        if ($_SESSION['admin'] === 1) {
+          echo "<hr /><p>";
+          var_dump($_SESSION);
+          echo "<p>";
+        }
+      ?>
+
     </div> <!-- /container -->
     <?php include './assets/js/universal.html'; ?>
     <script src="./assets/js/exp_explanation.js"></script>

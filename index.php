@@ -76,43 +76,41 @@
           ';
         }
       ?>
-      <div class="row">
-        <div class="col-md-12">
-          <h4>UW-Madison Graphics Group Research - Informed Consent</h4>
+      <form action="./exp_explanation.php" method="post">
+        <div class="row">
+          <div class="col-md-12">
+            <h4>UW-Madison Graphics Group Research - Informed Consent</h4>
 
-          <p>Infomred<br /><br />Consnet<br /><br />Statement</p>
-          <br /><br />
+            <p>Infomred<br /><br />Consnet<br /><br />Statement</p>
+            <br /><br />
 
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="consent_agree" name="consent_agree">
-            <label class="custom-control-label consent_text" for="consent_agree" id="consent_lbl">
-              I have read and agree to the terms of the UW-Madison Research Study Infomred Consent.
-            </label>
-          </div>
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="consent_agree" name="consent_agree">
+              <label class="custom-control-label consent_text" for="consent_agree" id="consent_lbl">
+                I have read and agree to the terms of the UW-Madison Research Study Infomred Consent.
+              </label>
+            </div>
 
-        </div> <!-- /column -->
-      </div> <!-- /row -->
-      <br /><br />
+          </div> <!-- /column -->
+        </div> <!-- /row -->
+        <br /><br />
 
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <form action="./exp_explanation.php" method="post">
+        <div class="row">
+          <div class="col-md-12 text-center">
             <button class="btn btn-lg btn-outline-danger" id="continue_button" disabled>
               <b style="font-size: 38px">CONTINUE<b>
             </button>
-          </form>
-        </div> <!-- /column -->
-      </div> <!-- /row -->
+          </div> <!-- /column -->
+        </div> <!-- /row -->
+      </form>
 
-          <?php
-            if ($_SESSION['admin'] === 1) {
-              echo "<hr /><p>";
-              var_dump($_SESSION);
-              echo "<p>";
-            }
-          ?>
-        </div> <!-- /column -->
-      </div> <!-- /row -->
+      <?php
+        if ($_SESSION['admin'] === 1) {
+          echo "<hr /><p>";
+          var_dump($_SESSION);
+          echo "<p>";
+        }
+      ?>
     </div> <!-- /container -->
     <?php include './assets/js/universal.html'; ?>
     <script src="./assets/js/informed_consent.js"></script>
