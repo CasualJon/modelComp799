@@ -1,6 +1,7 @@
 <?php
   //Control vars and database connection settings
-echo "here";
+echo "here<br />";
+echo $db_user."<br />";
   require './control_variables.php';
   $db_host = "localhost";
 echo "past";die;
