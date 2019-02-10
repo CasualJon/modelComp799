@@ -1,6 +1,6 @@
 <?php
   //Control vars and database connection settings
-  // require './control_variables.php';
+  require '/php_includes/control_variables.php';
   $host = "localhost";
 
   //Check to see if $mysql already exists, instantiate if not
@@ -19,7 +19,7 @@
     if (!empty($_SESSION['message'])) $_SESSION['message'] += "<br />".$db_issue;
     else $_SESSION['message'] = $db_issue;
 
-    header("location: ./error.php");
+    header("location: /error.php");
     exit;
   }
 ?>
