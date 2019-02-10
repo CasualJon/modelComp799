@@ -1,7 +1,7 @@
 <?php
   //Session, control vars and database connection settings
   session_start();
-  require './control_variables.php';
+  require './php_includes/control_variables.php';
   require './php_includes/db.php';
 
   if (!isset($_SESSION['admin']) || $_SESSION['admin'] == 0) {
