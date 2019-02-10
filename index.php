@@ -14,6 +14,8 @@
       exit;
     }
 
+    //If the connection was sent through MTruk, validate that we've not
+    //encountered this person before
     $ip_address = $_SERVER['REMOTE_ADDR'];
     $query = "SELECT * FROM workers WHERE ip_address=?";
     $ip_stmt = $mysqli->stmt_init();
