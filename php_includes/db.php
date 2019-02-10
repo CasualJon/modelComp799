@@ -1,6 +1,6 @@
 <?php
   //Control vars and database connection settings
-  require './control_variables.php';
+  // require './control_variables.php';
   $host = "localhost";
 
   //Check to see if $mysql already exists, instantiate if not
