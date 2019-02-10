@@ -11,11 +11,11 @@
     header("location: ./error.php");
     exit;
   }
-  if (!isset($_POST['consent_agree']) || $_POST['consent_agree'] != 1) {
-    $_SESSION['message'] = "We do not see an Infomred Consent Agreement acknowledgement.";
-    header("location: ./error.php");
-    exit;
-  }
+  // if (!isset($_POST['consent_agree']) || $_POST['consent_agree'] != 1) {
+  //   $_SESSION['message'] = "We do not see an Infomred Consent Agreement acknowledgement.";
+  //   header("location: ./error.php");
+  //   exit;
+  // }
 
 ?>
 
@@ -68,6 +68,8 @@
         if ($_SESSION['admin'] === 1) {
           echo "<hr /><p>";
           var_dump($_SESSION);
+          echo "<br />";
+          var_dump($_POST);
           echo "<p>";
         }
       ?>
