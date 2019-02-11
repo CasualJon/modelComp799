@@ -15,7 +15,7 @@
   // }
   // unset($key);
   //Default sorting of scandir() returns these as elements 0 & 1
-  $dir_contents = array_splice($dir_contents, 0, 2);
+  array_splice($dir_contents, 0, 2);
 
   $_SESSION['exp_data'] = $dir_contents;
 
