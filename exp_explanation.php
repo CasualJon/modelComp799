@@ -4,7 +4,7 @@
   require './php_includes/control_variables.php';
   require './php_includes/db.php';
 
-  //Check that the connection proceeded to this page via index.php
+  //Check that the connection proceeded to this page by internal reference
   $refuri = parse_url($_SERVER['HTTP_REFERER']);
   if($refuri['host'] != $localhost_domain) {
     $_SESSION['message'] = "Mistakes were made.";
@@ -47,7 +47,7 @@
       ?>
       <div class="row">
         <div class="col-md-12">
-          <h4>UW-Madison Graphics Group Research - Informed Consent</h4>
+          <h4>UW-Madison Graphics Group Research - Experiment Explanation</h4>
 
           <p>Experiment<br /><br />Explanation<br /><br />Statement</p>
           <br /><br />
@@ -58,7 +58,7 @@
 
       <div class="row">
         <div class="col-md-12 text-center">
-          <button class="btn btn-lg btn-outline-danger" id="continue_button" disabled>
+          <button class="btn btn-lg btn-outline-danger" id="continue_button" onclick="beginExperiment()" disabled>
             <b style="font-size: 38px">BEGIN<b>
           </button>
         </div> <!-- /column -->
