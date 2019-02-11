@@ -13,9 +13,14 @@
   ------------------------------------------------------------------------<br />
   NOTE: Much of the configuration is controlled through the file
   <b>/php_includes/control_variables.php</b><br />
+
   <br />
+
   The system-wide page timeout setting - how long a user can remain inactive on
-  a page - is contained in /assets/js/time_expired.js. Note that the Informed
-  Consent (index.php) does not monitor user responsiveness to ensure adequate
-  time for a user to review the material.
+  a page - is contained in /assets/js/time_expired.js. Similarly, the minimum
+  amount of time a user should remain on a page to review or inspect the
+  question is controlled in the time_expiered.js.<br />
+  
+  <b>Note</b> that the Informed Consent (index.php) does not monitor user
+  responsiveness to ensure adequate time for a user to review the material.<br />
 </p>
