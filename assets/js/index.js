@@ -14,9 +14,7 @@ $(document).ready(function(){
 //Function enables the button to begin the experiment
 function enableBeginButton() {
   var beginButton = document.getElementById('begin_button');
-  if (document.getElementById('exp_acknowledge').checked) {
-    beginButton.disabled = false;
-  }
+  beginButton.disabled = false;
 } //END enableBeginButton()
 
 //beginExperiment()
