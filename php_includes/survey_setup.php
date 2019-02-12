@@ -10,10 +10,15 @@
   //Default sorting of scandir() returns these as elements 0 & 1
   array_splice($dir_contents, 0, 2);
 
-  //NOTE - Pick up here. Use RNG to pull out of dir_contents, prepend with the
-  //value from img_source, adn add into exp_data
+  //Set number of remaining questions equal to the total number of questions
+  $q_remaining = $num_questions;
+  //Randomly select questions from dir_contents to place into exp_data (to randomize order)
+  for ($i = 0; i < $num_questions; $i++) {
+    $indx = rand(0, $q_remaining - 1);
+    array_push($exp_data, $dir_contents[indx]);
+    array_splice($dir_contents, indx, 1);
+    $q_remaining--;
+  }
 
   $_SESSION['exp_data'] = $exp_data;
-
-
 ?>
