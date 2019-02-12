@@ -92,7 +92,7 @@ input:focus, textarea:focus {
 }
 
 /******************************************************************************/
-/* Informed Consent Agreement Checkbox */
+/* Experiment Acknowledgement Checkbox */
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
   background-color: rgba(197, 5, 12, 0.95);
 }
@@ -102,7 +102,7 @@ input:focus, textarea:focus {
 }
 
 /******************************************************************************/
-/* CONTINUE Button */
+/* BEGIN/CONTINUE Button */
 .btn-outline-danger {
   color: #FFFFFF;
   background-color: transparent;
