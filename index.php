@@ -81,7 +81,7 @@
           ';
         }
       ?>
-      <form action="./exp_explanation.php" method="post">
+      <form action="./survey.php" method="post">
         <div class="row">
           <div class="col-md-12">
             <h4>UW-Madison Graphics Group Research - Experiment Explanation</h4>
