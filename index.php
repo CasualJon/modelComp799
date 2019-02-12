@@ -1,4 +1,8 @@
 <?php
+  //****************************************************************************
+  //Assumes Informed Consent was obtained from the referring site, MTurk
+  //****************************************************************************
+
   //Session, control vars and database connection settings
   session_start();
   require './php_includes/control_variables.php';
@@ -58,6 +62,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Experiment main page.">
     <meta name="author" content="UW-Madison Graphics Group">
+    <?php include './php_includes/favicon.html'; ?>
 
     <title>UW-Madison Graphics</title>
     <?php include './assets/css/style.html'; ?>
@@ -79,15 +84,15 @@
       <form action="./exp_explanation.php" method="post">
         <div class="row">
           <div class="col-md-12">
-            <h4>UW-Madison Graphics Group Research - Informed Consent</h4>
+            <h4>UW-Madison Graphics Group Research - Experiment Explanation</h4>
 
-            <p>Infomred<br /><br />Consnet<br /><br />Statement</p>
+            <p>Experiment<br /><br />Explanation<br /><br />Statement</p>
             <br /><br />
 
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="consent_agree" name="consent_agree">
-              <label class="custom-control-label consent_text" for="consent_agree" id="consent_lbl">
-                I have read and agree to the terms of the UW-Madison Research Study Infomred Consent.
+              <input type="checkbox" class="custom-control-input" id="exp_acknowledge" name="exp_acknowledge">
+              <label class="custom-control-label consent_text" for="exp_acknowledge" id="exp_lbl">
+                I have read the Experiment Explanation and understand what is expected of me.
               </label>
             </div>
 
@@ -97,8 +102,8 @@
 
         <div class="row">
           <div class="col-md-12 text-center">
-            <button class="btn btn-lg btn-outline-danger" id="continue_button" disabled>
-              <b style="font-size: 38px">CONTINUE<b>
+            <button class="btn btn-lg btn-outline-danger" id="begin_button" disabled>
+              <b style="font-size: 38px">BEGIN<b>
             </button>
           </div> <!-- /column -->
         </div> <!-- /row -->
@@ -113,6 +118,6 @@
       ?>
     </div> <!-- /container -->
     <?php include './assets/js/universal.html'; ?>
-    <script src="./assets/js/informed_consent.js"></script>
+    <script src="./assets/js/index.js"></script>
   </body>
 </html>

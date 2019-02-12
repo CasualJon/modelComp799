@@ -11,5 +11,9 @@
 
   //Directory information for the images the classifier/user will evaluate
   $img_source = "./assets/img/lyrics/";
-  $num_questions = 20;
+  $num_questions = 24;
+
+  //Intervention config: whether/when to show. 0 = before start, 12 = before 13
+  $intervention_trigger = true;
+  $intervention_count = 12;
 ?>

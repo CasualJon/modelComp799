@@ -3,7 +3,7 @@
   session_start();
   require './php_includes/control_variables.php';
   require './php_includes/db.php';
-  require './php_includes/survey_data.php';
+  require './php_includes/survey_setup.php';
 
   //Check that the connection proceeded to this page by internal reference
   $refuri = parse_url($_SERVER['HTTP_REFERER']);
@@ -12,12 +12,15 @@
     header("location: ./error.php");
     exit;
   }
+  if (!isset($_POST['exp_acknowledge']) || strcmp($_POST['exp_acknowledge'], "on")) {
+    $_SESSION['Weedout_Checkbox'] = 1;
+    unset($_POST['exp_acknowledge']);
+  }
   if (!isset($_SESSION['exp_data']) || empty($_SESSION['exp_data'])) {
     $_SESSION['message'] = "An error occurred in configuring the survey data.";
     header("location: ./error.php");
     exit;
   }
-
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +31,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Experiment main page.">
     <meta name="author" content="UW-Madison Graphics Group">
+    <?php include './php_includes/favicon.html'; ?>
 
     <title>UW-Madison Graphics</title>
     <?php include './assets/css/style.html'; ?>

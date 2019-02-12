@@ -1,10 +1,6 @@
 $(document).ready(function(){
   //Enable the option buttons (user classify vs model classify) after 10 seconds
-  //(10,000ms). ***NOTE: optionDelay is controlled by /assets/js/time_expired.js
-  setTimeout(enableUserSelect, optionDelay);
-  //If user sits idle for > 4 minutes (240s, 240000ms), stop survey
-  //***NOTE: maxMillis is controlled by /assets/js/time_expired.js
-  setTimeout(elapseSurvey, maxMillis);
+  setTimeout(enableUserSelect, 10000);
 });
 
 //enableUserSelect()

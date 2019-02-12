@@ -30,7 +30,7 @@ hr {
 
 /******************************************************************************/
 /* Labels and Inputs */
-label:not([for="consent_agree"]) {
+label:not([for="exp_acknowledge"]) {
   position: absolute;
   -webkit-transform: translateY(6px);
           transform: translateY(6px);

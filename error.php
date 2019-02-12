@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Error.">
     <meta name="author" content="UW-Madison Graphics Group">
+    <?php include './php_includes/favicon.html'; ?>
 
     <title>Error</title>
     <?php include './assets/css/style.html'; ?>
