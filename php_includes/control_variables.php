@@ -7,7 +7,7 @@
   //Database informaiton for mysqli access
   $db_name = "model_understanding_spring19";
   $db_user = "phpmyadmin";
-  $db_pass = "cs799";
+  $db_pass = "westdayton";
 
   //Directory information for the images the classifier/user will evaluate
   $img_source = "./assets/img/lyrics/";

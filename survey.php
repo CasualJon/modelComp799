@@ -12,7 +12,7 @@
     header("location: ./error.php");
     exit;
   }
-  if (!isset($_POST['exp_acknowledge']) || strcmp($_POST['exp_acknowledge'], "on")) {
+  if (isset($_POST['exp_acknowledge']) && strcmp($_POST['exp_acknowledge'], "on") == 0) {
     $_SESSION['Weedout_Checkbox'] = 1;
     unset($_POST['exp_acknowledge']);
   }
