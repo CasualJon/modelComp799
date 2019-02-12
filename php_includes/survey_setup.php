@@ -14,7 +14,8 @@
   $q_remaining = $num_questions;
   //Randomly select questions from dir_contents to place into exp_data (to randomize order)
   for ($i = 0; i < 1; $i++) {
-    $indx = mt_rand(0, $q_remaining - 1);
+    $tmp = $q_remaining - 1;
+    $indx = mt_rand(0, $tmp);
     array_push($exp_data, $dir_contents[$indx]);
     array_splice($dir_contents, $indx, 1);
     $q_remaining--;
