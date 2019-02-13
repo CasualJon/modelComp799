@@ -27,10 +27,12 @@
         <tr>
           <td>visit_date</td>
           <td>date</td>
+          <td></td>
         </tr>
         <tr>
           <td>start_time</td>
           <td>varchar (24)</td>
+          <td></td>
         </tr>
         <tr>
           <td>end_time</td>
@@ -55,6 +57,7 @@
           <tr>
             <td>password</td>
             <td>varchar (256)</td>
+            <td></td>
           </tr>
         </tbody>
       </table>
