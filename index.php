@@ -44,10 +44,11 @@
     $resultSet->free();
     $query = "INSERT INTO workers (ip_address, visit_date, start_time) ";
     $query .= "VALUES (?, ?, ?)";
+    date_default_timezone_set("America/Chicago");
+    $curr_time = date("h:i a");
     $curr_date = date("Y-m-d");
-    $curr_time = time() % 1400;
     $ip_stmt->prepare($query);
-    $ip_stmt->bind_param("ssi", $ip_address, $curr_date, $curr_time);
+    $ip_stmt->bind_param("sss", $ip_address, $curr_date, $curr_time);
     $ip_stmt->execute();
     $ip_stmt->close();
     unset($ip_address, $query, $curr_date, $curr_time);

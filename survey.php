@@ -64,8 +64,6 @@
         if ($_SESSION['admin'] === 1) {
           echo "<hr /><p>";
           var_dump($_SESSION);
-          echo "<br />";
-          var_dump($_POST);
           echo "<p>";
         }
       ?>
