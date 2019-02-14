@@ -74,8 +74,8 @@
         }
 
         //If the user completed the total number of listed questions, then
-        //redirect to the thank you page
-        if ($_SESSION['survey']['curr_question'] == $num_questions) {
+        //redirect to the thank you page (-1 becasue of 0-based indexing)
+        if ($_SESSION['survey']['curr_question'] == $num_questions - 1) {
           header("location: ../thank_you.php");
           exit;
         }
