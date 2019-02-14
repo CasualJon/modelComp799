@@ -76,7 +76,7 @@
         //If the user completed the total number of listed questions, then
         //redirect to the thank you page
         if ($_SESSION['survey']['curr_question'] == $num_questions) {
-          header("location: thank_you.php");
+          header("location: ../thank_you.php");
           exit;
         }
 
@@ -85,7 +85,7 @@
 
         //Return the current survey data and question
         $result['survey'] = $_SESSION['survey'];
-        $result['curr_question'] = $img_source.$_SESSION['exp_data'][$_SESSION['survey']['curr_question']];
+        $result['question_path'] = $img_source.$_SESSION['exp_data'][$_SESSION['survey']['curr_question']];
         break;
 
       default:
