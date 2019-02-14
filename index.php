@@ -4,6 +4,11 @@
   //****************************************************************************
 
   //Session, control vars and database connection settings
+  //Server should keep session data for 2 hours (90 min timeout)
+  ini_set('session.gc_maxlifetime', 7200);
+  //Client should remember their session id for 2 hours
+  session_set_cookie_params(7200);
+  //Start session
   session_start();
   require './php_includes/control_variables.php';
   require './php_includes/db.php';
@@ -35,12 +40,13 @@
       $worker_data = $resultSet->fetch_assoc();
       $resultSet->free();
       $ip_stmt->close();
-      $_SESSION['message'] = "We're sorry, but you can only complete this HIT survey once. This IP Address completed the survey on ".$worker_data['visit_date']." using MTurk Worker ID ".$worker_data['mturk_worker_id'];
+      $_SESSION['message'] = "We're sorry, but you can only complete this HIT survey once. This IP Address completed the survey on ".$worker_data['visit_date'].".";
       unset($ip_address, $query, $worker_data);
       header("location: ./error.php");
       exit;
     }
 
+    //Set worker data into the table
     $resultSet->free();
     $query = "INSERT INTO workers (ip_address, visit_date, start_time) ";
     $query .= "VALUES (?, ?, ?)";
@@ -50,8 +56,18 @@
     $ip_stmt->prepare($query);
     $ip_stmt->bind_param("sss", $ip_address, $curr_date, $curr_time);
     $ip_stmt->execute();
-    $ip_stmt->close();
-    unset($ip_address, $query, $curr_date, $curr_time);
+    unset($query, $curr_date, $curr_time);
+
+    //Retrieve the interal identifier set into the worker table from last action
+    $query = "SELECT internal_identifier FROM workers WHERE ip_address=?";
+    $ip_stmt->prepare($query);
+    $ip_stmt->bind_param("s", $ip_address);
+    $ip_stmt->execute();
+    $resultSet = $ip_stmt->get_result();
+    $internal_id = $resultSet->fetch_assoc();
+    $resultSet->free();
+    $_SESSION['internal_identifier'] = $internal_id['internal_identifier'];
+    unset($ip_address, $internal_id);
   }
 ?>
 
@@ -85,7 +101,7 @@
       <form action="./survey.php" method="post">
         <div class="row">
           <div class="col-md-12">
-            <h4>UW-Madison Graphics Group Research - Experiment Explanation</h4>
+            <h3>UW-Madison Graphics Group Research - Experiment Explanation</h3>
 
             <p>Experiment<br /><br />Explanation<br /><br />Statement</p>
             <br /><br />

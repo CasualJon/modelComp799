@@ -3,9 +3,6 @@
   session_start();
   require './php_includes/control_variables.php';
   require './php_includes/db.php';
-  if (!isset($_SESSION['exp_data'])) {
-    require './php_includes/survey_setup.php';
-  }
 
   //Check that the connection proceeded to this page by internal reference
   $refuri = parse_url($_SERVER['HTTP_REFERER']);
@@ -13,23 +10,6 @@
     $_SESSION['message'] = "Mistakes were made.";
     header("location: ./error.php");
     exit;
-  }
-  if (isset($_POST['exp_acknowledge']) && strcmp($_POST['exp_acknowledge'], "on") == 0) {
-    $_SESSION['Weedout_Checkbox'] = 1;
-    unset($_POST['exp_acknowledge']);
-  }
-  if (!isset($_SESSION['exp_data']) || empty($_SESSION['exp_data'])) {
-    $_SESSION['message'] = "An error occurred in configuring the survey data.";
-    header("location: ./error.php");
-    exit;
-  }
-
-  //Set SESSION variables to track survey control
-  if (!isset($_SESSION['survey'])) {
-    $_SESSION['survey']['begin_time'] = time();
-    $_SESSION['survey']['curr_question'] = 0;
-    $_SESSION['survey']['score'] = 0;
-    $_SESSION['survey']['response'] = array();
   }
 ?>
 
@@ -60,25 +40,13 @@
           ';
         }
       ?>
-
-      <!-- Survey header information (updated by JS) -->
       <div class="row">
-        <div class="col-md-8">
-          <h3><span id="question_title">The Survey</span></h3>
-        </div> <!-- /column -->
-        <div class="col-md-4">
-          <h3 class="text-right" id="score_space">Score: <span id="points_total">0</span></h3>
-        </div> <!-- /column -->
-      </div> <!-- /row -->
-      <hr />
+        <div class="col-md-12">
+          <h3>Thank You!</h3>
 
-      <!-- Survey question data -->
-      <div class="row">
-        <div class="col-md-6 text-center">
-          <span id="question_space"></span>
-        </div> <!-- /column -->
-        <div class="col-md-6 text-center">
-          <span id="respond_space"></span>
+          <p>Thanks<br /><br />For The<br /><br />Help</p>
+          <br /><br />
+
         </div> <!-- /column -->
       </div> <!-- /row -->
 
@@ -92,6 +60,6 @@
 
     </div> <!-- /container -->
     <?php include './assets/js/universal.html'; ?>
-    <script src="./assets/js/survey.js"></script>
+    <script src="./assets/js/thank_you.js"></script>
   </body>
 </html>

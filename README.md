@@ -20,9 +20,14 @@
     <table>
       <tbody>
         <tr>
+          <td>internal_identifier</td>
+          <td>integer (10)</td>
+          <td>primary key / auto increment</td>
+        </tr>
+        <tr>
           <td>ip_address</td>
           <td>varchar (54)</td>
-          <td>primary key</td>
+          <td>index</td>
         </tr>
         <tr>
           <td>visit_date</td>
@@ -43,6 +48,11 @@
           <td>hit_completion_code</td>
           <td>varchar (32)</td>
           <td>default null</td>
+        </tr>
+        <tr>
+          <td>weedout</td>
+          <td>tinyint (1)</td>
+          <td>default 0</td>
         </tr>
       </tbody>
     </table>
