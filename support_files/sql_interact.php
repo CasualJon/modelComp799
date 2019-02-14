@@ -75,7 +75,11 @@
 
         //If the user completed the total number of listed questions, then
         //redirect to the thank you page (-1 becasue of 0-based indexing)
+//TODO - remove debug
+        $_SESSION['NUM_QUESTIONS1'] = $num_questions;
         if ($_SESSION['survey']['curr_question'] == $num_questions - 1) {
+//TODO - remove debug
+          $_SESSION['NUM_QUESTIONS2'] = "In If Stmt";
           header("location: ../thank_you.php");
           exit;
         }
