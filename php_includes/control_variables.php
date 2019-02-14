@@ -24,5 +24,5 @@
   $intervention_count = 12;
 
   //Max allowable survey time in seconds (5400 = 90 min)
-  $max_allowed_time = 5400;
+  $max_allowed_time = 3600;
 ?>
