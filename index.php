@@ -5,9 +5,9 @@
 
   //Session, control vars and database connection settings
   //Server should keep session data for 2 hours (90 min timeout)
-  ini_set('session.gc_maxlifetime', 7200);
+  ini_set('session.gc_maxlifetime', 3800);
   //Client should remember their session id for 2 hours
-  session_set_cookie_params(7200);
+  session_set_cookie_params(3800);
   //Start session
   session_start();
   require './php_includes/control_variables.php';
