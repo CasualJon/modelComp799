@@ -20,6 +20,11 @@
       case 'get_survey_control':
         $result['survey'] = $_SESSION['survey'];
         $result['question_path'] = $img_source.$_SESSION['exp_data'][$_SESSION['survey']['curr_question']];
+
+        //If interventions are active this is the case to handle starting with an intervention
+        if ($intervention_trigger && $_SESSION['survey']['curr_question'] == $intervention_count) {
+          $result['intervention'] = true;
+        }
         break;
 
       case 'get_next_question':
@@ -66,26 +71,19 @@
           array_push($_SESSION['survey']['response'], $response_val);
         }
 
+        //Increment question counter (how many user has completed)
+        $_SESSION['survey']['curr_question']++;
+
         //If interventions are active and we've just completed the question count
         //required to trigger them, redirect to the intervention page
         if ($intervention_trigger && $_SESSION['survey']['curr_question'] == $intervention_count) {
-          header("location: ../intervention.php");
-          exit;
+          $result['intervention'] = true;
         }
 
-        //If the user completed the total number of listed questions, then
-        //redirect to the thank you page (-1 becasue of 0-based indexing)
-//TODO - remove debug
-        $_SESSION['NUM_QUESTIONS1'] = $num_questions;
-        if ($_SESSION['survey']['curr_question'] == $num_questions - 1) {
-//TODO - remove debug
-          $_SESSION['NUM_QUESTIONS2'] = "In If Stmt";
-          header("location: ../thank_you.php");
-          exit;
+        //If the user completed the total number of listed questions
+        if ($_SESSION['survey']['curr_question'] == $num_questions) {
+          $result['complete'] = true;
         }
-
-        //Increment question counter
-        $_SESSION['survey']['curr_question']++;
 
         //Return the current survey data and question
         $result['survey'] = $_SESSION['survey'];

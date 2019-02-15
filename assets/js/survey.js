@@ -56,6 +56,15 @@ function renderNextQuestion() {
   //TODO - remove debug code
   console.log(surveyControl);
 
+  //If survey responds that an intervention is next or the survey is completed,
+  //redirect to appropriate pages via window.location
+  if ('intervention' in surveyControl) {
+    location.replace("../../intervention.php");
+  }
+  else if ('complete' in surveyControl) {
+    location.replace("../../thank_you.php");
+  }
+
   //Set the header information
   var qNum = surveyControl.survey.curr_question + 1;
   document.getElementById("question_title").innerHTML = "Question " + qNum;
@@ -101,7 +110,7 @@ function renderNextQuestion() {
   respondSpace.appendChild(mlClassifyBtn);
 
   //Enable the buttons for user selection after 8 seconds
-  setTimeout(enableUserSelect, 8000);
+  setTimeout(enableUserSelect, 4000);
 
 } //END renderNextQuestion()
 
