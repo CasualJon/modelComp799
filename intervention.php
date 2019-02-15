@@ -40,6 +40,17 @@
           ';
         }
       ?>
+      <!-- Survey header information (updated by JS) -->
+      <div class="row">
+        <div class="col-md-8">
+          <h3><span id="question_title">The Survey</span></h3>
+        </div> <!-- /column -->
+        <div class="col-md-4">
+          <h3 class="text-right" id="score_space">Score: <span id="points_total">0</span></h3>
+        </div> <!-- /column -->
+      </div> <!-- /row -->
+      <hr />
+      
       <div class="row">
         <div class="col-md-12">
           <h3>The Intervention</h3>
