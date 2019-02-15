@@ -14,16 +14,16 @@
   $num_questions = 4;
 
   //Intervention config: whether/when to show. 0 = before start, 12 = before 13
-  $intervention_trigger = false;
+  $intervention_trigger = true;
   $intervention_count = 2;
 
   //Which char index in the string of the question/image name inicates T/F?
   //If image name is 448A.png, index 2 == 8... Even == false, Odd == true
-  $indicator_index = 2;
+  $ml_indicator_index = 2;
+  $user_class_index = 1;
   $model_sel_points = 4;
   $user_sel_points = 3;
-  $user_sel_opt_count = 2;
-  $usr_sel_opt_name = array("Dog", "Cat");
+  $user_sel_opt_name = array("Dog", "Cat");
 
   //Max allowable survey time in seconds (5400 = 90 min)
   $max_allowed_time = 3600;

@@ -102,6 +102,13 @@ input:focus, textarea:focus {
 }
 
 /******************************************************************************/
+/* Image Loading Spinner */
+.fa-spinner {
+  font-size: 24px;
+  color: #FFFFFF;
+}
+
+/******************************************************************************/
 /* BEGIN/CONTINUE Button */
 .btn-outline-danger {
   color: #FFFFFF;

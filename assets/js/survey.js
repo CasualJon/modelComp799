@@ -60,9 +60,11 @@ function renderNextQuestion() {
   //redirect to appropriate pages via window.location
   if ('intervention' in surveyControl) {
     location.replace("../../intervention.php");
+    return;
   }
   else if ('complete' in surveyControl) {
     location.replace("../../thank_you.php");
+    return;
   }
 
   //Set the header information
@@ -77,10 +79,10 @@ function renderNextQuestion() {
     questionSpace.removeChild(questionSpace.firstChild);
   }
 
-  var imageDisplay = document.createElement("img");
-  imageDisplay.setAttribute("src", surveyControl.question_path);
-  imageDisplay.setAttribute("width", imgWidth);
-  questionSpace.appendChild(imageDisplay);
+  //Load a spinner as a placeholder for the question image
+  var loadingDisplay = document.createElement("i");
+  loadingDisplay.setAttribute("class", "fa fa-spinner fa-spin");
+  questionSpace.appendChild(loadingDisplay);
 
   //Set the respond_space informaiton
   var respondSpace = document.getElementById('respond_space');
@@ -109,10 +111,28 @@ function renderNextQuestion() {
   mlClassifyBtn.innerHTML = "Model Classify";
   respondSpace.appendChild(mlClassifyBtn);
 
+  //Load the image after 2 seconds of delay
+  setTimeout(loadImage, 2000);
   //Enable the buttons for user selection after 8 seconds
   setTimeout(enableUserSelect, 4000);
-
 } //END renderNextQuestion()
+
+
+//enableUserSelect()
+//Function called after appropriate period for question/inspection to enable
+//page-specific user controls to respond to the question
+function loadImage() {
+  var questionSpace = document.getElementById('question_space');
+
+  while(questionSpace.hasChildNodes()) {
+    questionSpace.removeChild(questionSpace.firstChild);
+  }
+
+  var imageDisplay = document.createElement("img");
+  imageDisplay.setAttribute("src", surveyControl.question_path);
+  imageDisplay.setAttribute("width", imgWidth);
+  questionSpace.appendChild(imageDisplay);
+} //END loadImage()
 
 
 //enableUserSelect()
@@ -126,7 +146,25 @@ function enableUserSelect() {
 
 //selectionUserClassify()
 function selectionUserClassify() {
+  //Set the respond_space informaiton
+  var respondSpace = document.getElementById('respond_space');
 
+  while (respondSpace.hasChildNodes()) {
+    respondSpace.removeChild(respondSpace.firstChild);
+  }
+
+  var textData = document.createElement('h5');
+  textData.innerHTML = "Which option best classifies this image?<br />";
+  respondSpace.appendChild(textData);
+
+  for (var i = 0; i < surveyControl.sel_options.length; i++) {
+    var userSelectBtn = document.createElement("button");
+    userSelectBtn.setAttribute("class", "btn btn-primary btn-block btn-lg");
+    var buttonCall = "executeUserSelection(" + i + ")";
+    userSelectBtn.setAttribute("onclick", buttonCall);
+    userSelectBtn.innerHTML = surveyControl.sel_options[i];
+    respondSpace.appendChild(userSelectBtn);
+  }
 } //END selectionUserClassify()
 
 
@@ -155,3 +193,30 @@ function selectionMLClassify() {
               }
   });
 } //END selectionMLClassify()
+
+
+//executeUserSelection()
+function executeUserSelection(val) {
+  //Args: 0 for User classify
+  //      val passed in from button clicked as option selected
+  var args = [0, val];
+  jQuery.ajax({
+    type:     "POST",
+    url:      '../../support_files/sql_interact.php',
+    dataType: 'json',
+    data:     {functionname: 'get_next_question', arguments: args},
+    error:    function(a, b, c) {
+                console.log("jQuery.ajax could not execute php file.");
+              },
+    success:  function(obj) {
+                if (!('error' in obj)) {
+                  surveyControl = obj;
+                  //Callback
+                  renderNextQuestion();
+                }
+                else {
+                  console.log(obj.error);
+                }
+              }
+  });
+} //END executeUserSelection()
