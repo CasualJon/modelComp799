@@ -22,8 +22,17 @@
         $result['question_path'] = $img_source.$_SESSION['exp_data'][$_SESSION['survey']['curr_question']];
         $result['sel_options'] = $user_sel_opt_name;
 
-        //If interventions are active this is the case to handle starting with an intervention
-        if ($intervention_trigger && $_SESSION['survey']['curr_question'] == $intervention_count) {
+        //POST[0] = post_intervention when the user has completed the intervention
+        if (strcmp($_POST['arguments'][0], 'post_intervention') == 0) {
+          $_SESSION['survey']['intervention_comp'] = true;
+        }
+
+        //If interventions are active, and we have not completed the intervention,
+        //this is the case to handle starting with an intervention
+        if ($intervention_trigger &&
+            !$_SESSION['survey']['intervention_comp'] &&
+            $_SESSION['survey']['curr_question'] == $intervention_count) {
+
           $result['intervention'] = true;
         }
         break;

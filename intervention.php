@@ -50,16 +50,27 @@
         </div> <!-- /column -->
       </div> <!-- /row -->
       <hr />
-      
-      <div class="row">
-        <div class="col-md-12">
-          <h3>The Intervention</h3>
 
-          <p>Begin<br /><br />The<br /><br />Intervention</p>
-          <br /><br />
+      <form action="./survey.php" method="post">
+        <div class="row">
+          <div class="col-md-12">
+            <h3>The Intervention</h3>
 
-        </div> <!-- /column -->
-      </div> <!-- /row -->
+            <p>Begin<br /><br />The<br /><br />Intervention</p>
+            <br /><br />
+
+          </div> <!-- /column -->
+        </div> <!-- /row -->
+        <br /><br />
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <button class="btn btn-lg btn-outline-danger" id="continue_button" disabled>
+              <b style="font-size: 38px">CONTINUE<b>
+            </button>
+          </div> <!-- /column -->
+        </div> <!-- /row -->
+      </form>
 
       <?php
         if ($_SESSION['admin'] === 1) {

@@ -27,6 +27,7 @@
   //Set SESSION variables to track survey control
   if (!isset($_SESSION['survey'])) {
     $_SESSION['survey']['begin_time'] = time();
+    $_SESSION['survey']['intervention_comp'] = false;
     $_SESSION['survey']['curr_question'] = 0;
     $_SESSION['survey']['score'] = 0;
     $_SESSION['survey']['response'] = array();
