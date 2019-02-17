@@ -113,8 +113,8 @@ function renderNextQuestion() {
 
   //Load the image after 2 seconds of delay
   setTimeout(loadImage, 2000);
-  //Enable the buttons for user selection after 8 seconds
-  setTimeout(enableUserSelect, 4000);
+  //Enable the buttons for user selection after 3.5 seconds
+  setTimeout(enableUserSelect, 3500);
 } //END renderNextQuestion()
 
 

@@ -43,9 +43,6 @@ function fetchSurveyControl() {
 //setQuestionCountAndScore()
 //Set the header information
 function setQuestionCountAndScore() {
-  //curr_question advanced prior to triggering intervention, so do not add 1 here
-  var qNum = surveyControl.survey.curr_question;
-  document.getElementById("question_title").innerHTML = "Question " + qNum;
   document.getElementById("points_total").innerHTML = surveyControl.survey.score;
 } //END setQuestionCountAndScore()
 

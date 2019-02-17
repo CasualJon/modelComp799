@@ -35,6 +35,5 @@ function fetchSurveyControl() {
 //setQuestionCountAndScore()
 //Set the header information
 function setQuestionCountAndScore() {
-  document.getElementById("question_title").innerHTML = "Thank you!";
   document.getElementById("points_total").innerHTML = surveyControl.survey.score;
 } //END setQuestionCountAndScore()

@@ -19,8 +19,8 @@
     //If here, connection exists.
     //Validate that this connection is from MTurk and that this IP Address has not
     //previously completed a survey. If not from MTruk, check if user is admin
-    $refuri = parse_url($_SERVER['HTTP_REFERER']);
-    if($refuri['host'] != $allowed_ext_refer) {
+    $refuri = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
+    if(strcmp($refuri, $allowed_ext_refer) != 0) {
       header("location: ./admin_login.php");
       exit;
     }
@@ -56,7 +56,6 @@
     $ip_stmt->prepare($query);
     $ip_stmt->bind_param("sss", $ip_address, $curr_date, $curr_time);
     $ip_stmt->execute();
-    unset($query, $curr_date, $curr_time);
 
     //Retrieve the interal identifier set into the worker table from last action
     $query = "SELECT internal_identifier FROM workers WHERE ip_address=?";
@@ -66,8 +65,12 @@
     $resultSet = $ip_stmt->get_result();
     $internal_id = $resultSet->fetch_assoc();
     $resultSet->free();
+
     $_SESSION['internal_identifier'] = $internal_id['internal_identifier'];
-    unset($ip_address, $internal_id);
+    $_SESSION['ip_address'] = $ip_address;
+    $_SESSION['curr_date'] = $curr_date;
+
+    unset($query, $curr_date, $curr_time, $ip_address, $internal_id);
   }
 ?>
 

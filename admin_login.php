@@ -40,6 +40,11 @@
 
 
           <?php
+            echo "<hr /><p>";
+            $refuri = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
+            echo $refuri;
+            echo "</p>";
+
             if ($_SESSION['admin'] === 1) {
               echo "<hr /><p>";
               var_dump($_SESSION);
