@@ -10,21 +10,21 @@
   $db_pass = "westdayton";
 
   //Directory information for the images the classifier/user will evaluate
-  $img_source = "./assets/img/lyrics/";
-  $num_questions = 4;
+  $img_source = "./assets/img/pets/";
+  $num_questions = 24;
 
   //Intervention config: whether/when to show. 0 = before start, 12 = before 13
   $intervention_trigger = true;
-  $intervention_count = 2;
+  $intervention_count = 12;
 
   //Which char index in the string of the question/image name inicates T/F?
   //If image name is 448A.png, index 2 == 8... Even == false, Odd == true
-  $ml_indicator_index = 2;
   $user_class_index = 1;
+  $ml_indicator_index = 2;
   $model_sel_points = 4;
   $user_sel_points = 3;
   $user_sel_opt_name = array("Dog", "Cat");
 
-  //Max allowable survey time in seconds (5400 = 90 min)
+  //Max allowable survey time in seconds (3600 = 90 min)
   $max_allowed_time = 3600;
 ?>

@@ -14,10 +14,6 @@
     header("location: ./error.php");
     exit;
   }
-  if (isset($_POST['exp_acknowledge']) && strcmp($_POST['exp_acknowledge'], "on") == 0) {
-    $_SESSION['Weedout_Checkbox'] = 1;
-    unset($_POST['exp_acknowledge']);
-  }
   if (!isset($_SESSION['exp_data']) || empty($_SESSION['exp_data'])) {
     $_SESSION['message'] = "An error occurred in configuring the survey data.";
     header("location: ./error.php");

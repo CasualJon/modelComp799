@@ -106,13 +106,6 @@
             <p>Experiment<br /><br />Explanation<br /><br />Statement</p>
             <br /><br />
 
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="exp_acknowledge" name="exp_acknowledge">
-              <label class="custom-control-label consent_text" for="exp_acknowledge" id="exp_lbl">
-                I have read the Experiment Explanation and understand what is expected of me.
-              </label>
-            </div>
-
           </div> <!-- /column -->
         </div> <!-- /row -->
         <br /><br />

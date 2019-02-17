@@ -49,11 +49,6 @@
           <td>varchar (32)</td>
           <td>default null</td>
         </tr>
-        <tr>
-          <td>weedout</td>
-          <td>tinyint (1)</td>
-          <td>default 0</td>
-        </tr>
       </tbody>
     </table>
     <li>admin_config</li>
