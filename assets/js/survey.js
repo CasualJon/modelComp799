@@ -98,7 +98,7 @@ function renderNextQuestion() {
   var userClassifyBtn = document.createElement("button");
   userClassifyBtn.disabled = true;
   userClassifyBtn.setAttribute("id", user_classify);
-  userClassifyBtn.setAttribute("class", "btn btn-primary btn-block btn-lg");
+  userClassifyBtn.setAttribute("class", "btn btn-outline-primary btn-block btn-lg");
   userClassifyBtn.setAttribute("onclick", "selectionUserClassify()");
   userClassifyBtn.innerHTML = "Human Classify";
   respondSpace.appendChild(userClassifyBtn);
@@ -106,7 +106,7 @@ function renderNextQuestion() {
   var mlClassifyBtn = document.createElement("button");
   mlClassifyBtn.disabled = true;
   mlClassifyBtn.setAttribute("id", ml_classify);
-  mlClassifyBtn.setAttribute("class", "btn btn-success btn-block btn-lg");
+  mlClassifyBtn.setAttribute("class", "btn btn-outline-success btn-block btn-lg");
   mlClassifyBtn.setAttribute("onclick", "selectionMLClassify()");
   mlClassifyBtn.innerHTML = "Model Classify";
   respondSpace.appendChild(mlClassifyBtn);
@@ -139,8 +139,12 @@ function loadImage() {
 //Function called after appropriate period for question/inspection to enable
 //page-specific user controls to respond to the question
 function enableUserSelect() {
-  document.getElementById(ml_classify).disabled = false;
-  document.getElementById(user_classify).disabled = false;
+  var usrBtn = document.getElementById(user_classify);
+  var mlBtn = document.getElementById(ml_classify);
+  usrBtn.setAttribute("class", "btn btn-primary btn-block btn-lg");
+  usrBtn.disabled = false;
+  mlBtn.setAttribute("class", "btn btn-success btn-block btn-lg");
+  mlBtn.disabled = false;
 } //END enableUserSelect()
 
 
@@ -159,7 +163,7 @@ function selectionUserClassify() {
 
   for (var i = 0; i < surveyControl.sel_options.length; i++) {
     var userSelectBtn = document.createElement("button");
-    userSelectBtn.setAttribute("class", "btn btn-primary btn-block btn-lg");
+    userSelectBtn.setAttribute("class", "btn btn-outline-primary btn-block btn-lg");
     var buttonCall = "executeUserSelection(" + i + ")";
     userSelectBtn.setAttribute("onclick", buttonCall);
     var optionId = "classifyButton" + i;
@@ -168,6 +172,20 @@ function selectionUserClassify() {
     userSelectBtn.disabled = true;
     respondSpace.appendChild(userSelectBtn);
   }
+
+  var br1 = document.createElement("br");
+  var br2 = document.createElement("br");
+  respondSpace.appendChild(br1);
+  respondSpace.appendChild(br2);
+
+  var mlClassifyBtn = document.createElement("button");
+  mlClassifyBtn.disabled = true;
+  mlClassifyBtn.setAttribute("id", ml_classify);
+  mlClassifyBtn.setAttribute("class", "btn btn-outline-success btn-block btn-lg");
+  mlClassifyBtn.setAttribute("onclick", "selectionMLClassify()");
+  mlClassifyBtn.innerHTML = "Model Classify";
+  respondSpace.appendChild(mlClassifyBtn);
+
   //Enable the buttons for user selection after 3.5 seconds
   setTimeout(enableClassifySelect, 750);
 } //END selectionUserClassify()
@@ -180,8 +198,11 @@ function enableClassifySelect() {
   var prefix = "classifyButton";
   for (var i = 0; i < surveyControl.sel_options.length; i++) {
     var id = prefix + i;
+    document.getElementById(id).setAttribute("class", "btn btn-primary btn-block btn-lg");
     document.getElementById(id).disabled = false;
   }
+  document.getElementById('ml_classify').setAttribute("class", "btn btn-success btn-block btn-lg");
+  document.getElementById('ml_classify').disabled = false;
 } //END enableClassifySelect()
 
 

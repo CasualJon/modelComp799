@@ -14,13 +14,34 @@
 
   $hit_completion_code = "".$_SESSION['ip_address']."|".$_SESSION['$curr_date'];
   $hit_completion_code = md5($hit_completion_code);
-  $curr_time = date("h:i a");
-  $query = "UPDATE workers SET end_time=?, hit_completion_code=? WHERE internal_identifier=?";
-  $comp_stmt = $mysqli->stmt_init();
-  $comp_stmt->prepare($query);
-  $comp_stmt->bind_param("ssi", $curr_time, $hit_completion_code, $_SESSION['internal_identifier']);
-  $comp_stmt->execute();
-  $comp_stmt->close();
+
+  if (!isset($_SESSION['done']) && $_SESSION['admin'] != 1) {
+    $data = "".$_SESSION['internal_identifier'].",";
+    $data .= $_SESSION['survey']['mid_score'].",";
+    $data .= $_SESSION['survey']['score'].",";
+    for ($i = 0; $i < sizeof($_SESSION['survey']['response']); $i++) {
+      $data .= $_SESSION['survey']['response'][$i]['question#'].",";
+      $data .= $_SESSION['survey']['response'][$i]['quest_name'].",";
+      $data .= $_SESSION['survey']['response'][$i]['correctness'].",";
+      $data .= $_SESSION['survey']['response'][$i]['eval_method'].",";
+      $data .= $_SESSION['survey']['response'][$i]['user_val'].",";
+    }
+    $result_stmt = $mysqli->stmt_init();
+    $result_stmt->prepare("INSERT INTO responses VALUES(?, ?, ?, ?)");
+    $result_stmt->bind_param("iiis", $_SESSION['internal_identifier'], $_SESSION['survey']['mid_score'], $_SESSION['survey']['score'], $data);
+    $result_stmt->execute();
+    $result_stmt->close();
+
+    $curr_time = date("h:i a");
+    $query = "UPDATE workers SET end_time=?, hit_completion_code=? WHERE internal_identifier=?";
+    $comp_stmt = $mysqli->stmt_init();
+    $comp_stmt->prepare($query);
+    $comp_stmt->bind_param("ssi", $curr_time, $hit_completion_code, $_SESSION['internal_identifier']);
+    $comp_stmt->execute();
+    $comp_stmt->close();
+  }
+
+  $_SESSION['done'] = true;
 ?>
 
 <!DOCTYPE html>

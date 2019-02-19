@@ -25,6 +25,7 @@
         //POST[0] = post_intervention when the user has completed the intervention
         if (strcmp($_POST['arguments'][0], 'post_intervention') == 0) {
           $_SESSION['survey']['intervention_comp'] = true;
+          $_SESSION['survey']['mid_score'] = $_SESSION['survey']['score'];
         }
 
         //If interventions are active, and we have not completed the intervention,
