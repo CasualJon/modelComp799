@@ -12,6 +12,10 @@
 
   //Directory information for the images the classifier/user will evaluate
   $img_source = "./assets/img/pets/";
+  //A and B is an evenly distributed split to ensure even correctness distribution
+  //across pre- & post-intervention user selections
+  $build_source_A = "./assets/img/build/A";
+  $build_source_B = "./assets/img/build/B";
   $num_questions = 24;
 
   //Intervention config: whether/when to show. 0 = before start, 12 = before 13
