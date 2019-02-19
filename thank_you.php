@@ -64,10 +64,18 @@
         <div class="col-md-12">
           <h3>Thank You!</h3>
 
-          <p>Thanks<br /><br />For The<br /><br />Help</p>
+          <p>We're grateful for your help in this study. Your Amazon MTurk HIT Completion Code is below.</p>
+          <p>Please be aware that you can only participate in this study a single time. Subsequent attempts
+             to work this HIT may jeopardize the validity of your completion code.</p>
 
-          <h5>Amazon MTurk HIT Completion Code: <br /><?php echo $hit_completion_code; ?></h5>
+          <h4>Amazon MTurk HIT Completion Code: </h4>
+          <input type="text" class="copy_code" id="hit_comp_code" value=<?php echo "\"".$hit_completion_code."\"" ?> />
+          <button type="button" class="btn" onclick="copyTextToClipboard()">Copy Code</button>
           <br /><br />
+
+          <p>Thanks again,<br />
+             University of Wisconsin-Madison Graphics Group</p>
+          <img src="./assets/img/UWMGG.png" alt="" />
 
         </div> <!-- /column -->
       </div> <!-- /row -->

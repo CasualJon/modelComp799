@@ -21,9 +21,9 @@
     <div class="container">
       <div class="row justify-content-center align-items-center">
         <div class="col-md-12">
-          <p>Admin Login!</p>
           <div class="form">
             <form action="./php_includes/admin_verify.php" method="post" autocomplete="off">
+              <h4>Admin Login</h4>
               <div class="field-wrap">
                 <label>Id</label>
                 <input type="text" required autocomplete="off" name="uid" autofocus />

@@ -30,7 +30,7 @@ hr {
 
 /******************************************************************************/
 /* Labels and Inputs */
-label:not([for="exp_acknowledge"]) {
+label {
   position: absolute;
   -webkit-transform: translateY(6px);
           transform: translateY(6px);
@@ -70,6 +70,12 @@ input, textarea {
 input:focus, textarea:focus {
   outline: 0;
   border: 2px solid #FFFFFF;
+}
+
+.copy_code {
+  height: 32px;
+  padding: 0;
+  border: none;
 }
 
 /******************************************************************************/

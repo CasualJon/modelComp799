@@ -37,3 +37,19 @@ function fetchSurveyControl() {
 function setQuestionCountAndScore() {
   document.getElementById("points_total").innerHTML = surveyControl.survey.score;
 } //END setQuestionCountAndScore()
+
+
+//copyTextToClipboard()
+//Copies text of hit completion code to user's clipboard
+function copyTextToClipboard() {
+  var copyTxt = document.getElementById("hit_comp_code");
+  copyTxt.select();
+  try {
+    // Now that we've selected the anchor text, execute the copy command
+    var successful = document.execCommand("copy");
+    alert("Copied Code: " + copyTxt.value);
+  }
+  catch(err) {
+    alert('Oops, unable to copy.');
+  }
+} //END copyTextToClipboard()
