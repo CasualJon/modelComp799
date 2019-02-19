@@ -9,7 +9,7 @@
 
   //Check that the connection proceeded to this page by internal reference
   $refuri = parse_url($_SERVER['HTTP_REFERER']);
-  if($refuri['host'] != $localhost_domain) {
+  if($refuri['host'] != $localhost_domain && $refuri['host'] != $allowed_ext_refer) {
     $_SESSION['message'] = "If you disabled referrer settings in your browser, we cannot validate your ability to access this page.";
     header("location: ./error.php");
     exit;

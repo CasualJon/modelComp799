@@ -13,6 +13,13 @@
   require './php_includes/control_variables.php';
   require './php_includes/db.php';
 
+  //If the user is returning to an active session, take them to the correct page
+  //Survey should handle redirection to survey/intervention/thank you
+  if (isset($_SESSION['survey'])) {
+    header("location: ./survey.php");
+    exit;
+  }
+
   if (!isset($_SESSION['admin']) || $_SESSION['admin'] == 0) {
     $_SESSION['admin'] = 0;
 

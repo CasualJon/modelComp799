@@ -114,7 +114,7 @@ function renderNextQuestion() {
   //Load the image after 2 seconds of delay
   setTimeout(loadImage, 2000);
   //Enable the buttons for user selection after 3.5 seconds
-  setTimeout(enableUserSelect, 3500);
+  setTimeout(enableUserSelect, 2750);
 } //END renderNextQuestion()
 
 
@@ -162,10 +162,27 @@ function selectionUserClassify() {
     userSelectBtn.setAttribute("class", "btn btn-primary btn-block btn-lg");
     var buttonCall = "executeUserSelection(" + i + ")";
     userSelectBtn.setAttribute("onclick", buttonCall);
+    var optionId = "classifyButton" + i;
+    userSelectBtn.setAttribute("id", optionId);
     userSelectBtn.innerHTML = surveyControl.sel_options[i];
+    userSelectBtn.disabled = true;
     respondSpace.appendChild(userSelectBtn);
   }
+  //Enable the buttons for user selection after 3.5 seconds
+  setTimeout(enableClassifySelect, 750);
 } //END selectionUserClassify()
+
+
+//enableClassifySelect()
+//Function called after appropriate period for question/inspection to enable
+//page-specific user controls to respond to the question
+function enableClassifySelect() {
+  var prefix = "classifyButton";
+  for (var i = 0; i < surveyControl.sel_options.length; i++) {
+    var id = prefix + i;
+    document.getElementById(id).disabled = false;
+  }
+} //END enableClassifySelect()
 
 
 //selectionMLClassify()

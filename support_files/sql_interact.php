@@ -35,6 +35,11 @@
 
           $result['intervention'] = true;
         }
+
+        //If the user completed the total number of listed questions
+        if ($_SESSION['survey']['curr_question'] >= $num_questions) {
+          $result['complete'] = true;
+        }
         break;
 
       case 'get_next_question':
