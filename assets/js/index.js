@@ -2,8 +2,8 @@
 var beginButton = document.getElementById('begin_button');
 
 $(document).ready(function(){
-  //Enable the Begin Button automatically after 12 seconds (12,000ms)
-  setTimeout(enableBeginButton, 1000);
+  //Enable the Begin Button automatically after 8 seconds (8,000ms)
+  setTimeout(enableBeginButton, 8000);
 });
 
 //Add Event Listener for checkbox... This will enable the Begin Button

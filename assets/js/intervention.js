@@ -5,7 +5,7 @@ fetchSurveyControl();
 var continueButton = document.getElementById('continue_button');
 
 $(document).ready(function(){
-  //Enable the Begin Button automatically after 12 seconds (12,000ms)
+  //Enable the Begin Button automatically after 8 seconds (8,000ms)
   setTimeout(enableContinueButton, 8000);
 });
 
