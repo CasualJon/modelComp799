@@ -4,10 +4,10 @@
   //****************************************************************************
 
   //Session, control vars and database connection settings
-  //Server should keep session data for 2 hours (90 min timeout)
-  ini_set('session.gc_maxlifetime', 3800);
-  //Client should remember their session id for 2 hours
-  session_set_cookie_params(3800);
+  //Server should keep session data for 75 minutes (60 min timeout)
+  ini_set('session.gc_maxlifetime', 4500);
+  //Client should remember their session id for 90 minutes
+  session_set_cookie_params(4500);
   //Start session
   session_start();
   require './php_includes/control_variables.php';
@@ -109,13 +109,63 @@
         }
       ?>
       <form action="./survey.php" method="post">
+        <!-- Simply adding some space from the top of the screen -->
         <div class="row">
           <div class="col-md-12">
-            <h3>UW-Madison Graphics Group Research - Experiment Explanation</h3>
+            <p>&nbsp;</p>
+            <hr />
+          </div> <!-- /column -->
+        </div> <!-- /row -->
 
-            <p>Experiment<br /><br />Explanation<br /><br />Statement</p>
-            <br /><br />
+        <!-- UWGG logo & title -->
+        <div class="row">
+          <div class="col-md-1">
+            <img src="./assets/img/UWMGG.png" height="30px" />
+          </div> <!-- /column -->
+          <div class="col-md-11">
+            <h4>UW-Madison Graphics Group Research</h4>
+          </div> <!-- /column -->
+        </div> <!-- /row -->
+        <br />
 
+        <!-- Begin experiment explanation -->
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Experiment Explanation</h3>
+            <p>
+              Hello, and thank you for agreeing to participate in this study on
+              human understanding of Machine Learning models.
+              <b style="color: yellow">
+                Below is a very short explanation of what you can expect.
+              </b>
+            </p>
+          </div> <!-- /column -->
+        </div> <!-- /row -->
+        <br />
+
+        <div class="row">
+          <div class="col-md-12">
+            <ul>
+              <li>You will be presented with 24 unique images</li>
+              <li>The main subject in each image is either a dog or a cat</li>
+
+              <img src="./assets/img/examples/E01W.jpg" height="42px" style="display: inline"/>
+              &nbsp;&nbsp;
+              <img src="./assets/img/examples/L12E.jpg" height="42px" />
+              <br /><br /><br />
+
+              <li>
+                For each image, select whether to classify the image yourself
+                (determine wither it contains a dog or a cat) or to allow
+                a Machine Learning-trained model to classify the image
+              </li>
+              <li>Correct answers that <span style="color: #007BFF">YOU classify are worth 3 points</span></li>
+              <li>Correct answers that the <span style="color: #28A745">Machine Learning model classifies are worth 4 points</span></li>
+              <br /><br />
+
+              <li>The Machine Learning model's overall accuracy is 75%</li>
+              <li>You will be presented with additonal data on how the model works mid-way through the experiment</li>
+            </ul>
           </div> <!-- /column -->
         </div> <!-- /row -->
         <br /><br />
