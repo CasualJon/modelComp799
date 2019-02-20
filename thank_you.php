@@ -176,11 +176,11 @@
       </div> <!-- /row -->
 
       <?php
-        // if ($_SESSION['admin'] === 1) {
+        if ($_SESSION['admin'] === 1) {
           echo "<hr /><p>";
           var_dump($_SESSION);
           echo "<p>";
-        // }
+        }
       ?>
 
     </div> <!-- /container -->
