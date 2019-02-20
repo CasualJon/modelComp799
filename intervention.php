@@ -106,7 +106,7 @@
         <div class="row">
           <div class="col-md-12 text-center">
             <button class="btn btn-lg btn-outline-danger" id="continue_button" disabled>
-              <b style="font-size: 38px">CONTINUE<b>
+              <b style="font-size: 38px">CONTINUE</b>
             </button>
           </div> <!-- /column -->
         </div> <!-- /row -->

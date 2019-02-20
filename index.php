@@ -173,7 +173,7 @@
         <div class="row">
           <div class="col-md-12 text-center">
             <button class="btn btn-lg btn-outline-danger" id="begin_button" disabled>
-              <b style="font-size: 38px">BEGIN<b>
+              <b style="font-size: 38px">BEGIN</b>
             </button>
           </div> <!-- /column -->
         </div> <!-- /row -->
