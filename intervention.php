@@ -59,7 +59,7 @@
 
             <?php
               if ($_SESSION['survey']['score'] <= 18) {
-                echo "<p>I don't think you're actually giving this your full efforts.</p>";
+                echo "<p>Ok, I think I see what's going on...</p>";
               }
               else if ($_SESSION['survey']['score'] < 36) {
                 echo "<p>Hey, not bad! <br />I can see you're mixing it up and trying to out think the model :D</p>";
