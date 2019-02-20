@@ -14,8 +14,11 @@
 
   $hit_completion_code = "".$_SESSION['ip_address']."|".$_SESSION['$curr_date'];
   $hit_completion_code = md5($hit_completion_code);
+  $done = false;
 
   if (!isset($_SESSION['done']) && $_SESSION['admin'] != 1) {
+    $q1 = false;
+    $q2 = false;
     $data = "".$_SESSION['internal_identifier'].",";
     $data .= $_SESSION['survey']['mid_score'].",";
     $data .= $_SESSION['survey']['score'].",";
@@ -27,9 +30,10 @@
       $data .= $_SESSION['survey']['response'][$i]['user_val'].",";
     }
     $result_stmt = $mysqli->stmt_init();
-    $result_stmt->prepare("INSERT INTO responses VALUES(?, ?, ?, ?)");
+    $query = "INSERT INTO responses (internal_identifier, pre_intervention_score, total_score, response) VALUES(?, ?, ?, ?)";
+    $result_stmt->prepare($query);
     $result_stmt->bind_param("iiis", $_SESSION['internal_identifier'], $_SESSION['survey']['mid_score'], $_SESSION['survey']['score'], $data);
-    $result_stmt->execute();
+    $q1 = $result_stmt->execute();
     $result_stmt->close();
 
     $curr_time = date("h:i a");
@@ -37,11 +41,13 @@
     $comp_stmt = $mysqli->stmt_init();
     $comp_stmt->prepare($query);
     $comp_stmt->bind_param("ssi", $curr_time, $hit_completion_code, $_SESSION['internal_identifier']);
-    $comp_stmt->execute();
+    $q2 = $comp_stmt->execute();
     $comp_stmt->close();
+
+    $done = $q1 && $q2;
   }
 
-  $_SESSION['done'] = true;
+  if ($done) $_SESSION['done'] = true;
 ?>
 
 <!DOCTYPE html>
@@ -160,19 +166,21 @@
           <button type="button" class="btn" onclick="copyTextToClipboard()">Copy Code</button>
           <br /><br />
 
-          <p>Thanks again,<br />
-             University of Wisconsin-Madison Graphics Group</p>
+          <p>
+            Thanks again,<br />
+             University of Wisconsin-Madison Graphics Group
+           </p>
           <img src="./assets/img/UWMGG.png" alt="" />
 
         </div> <!-- /column -->
       </div> <!-- /row -->
 
       <?php
-        if ($_SESSION['admin'] === 1) {
+        // if ($_SESSION['admin'] === 1) {
           echo "<hr /><p>";
           var_dump($_SESSION);
           echo "<p>";
-        }
+        // }
       ?>
 
     </div> <!-- /container -->

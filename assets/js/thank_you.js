@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 //Function to make an Ajax call to a php file that will pull data from the
 //server via ./support_php_files/sql_interact.php
 function fetchSurveyControl() {
-  args = ['post_intervention'];
+  var args = ['post_intervention'];
   jQuery.ajax({
     type:     "POST",
     url:      '../../support_files/sql_interact.php',
@@ -74,7 +74,7 @@ function evalForSave() {
 
 //fileDemographics()
 function fileDemographics() {
-  args = [document.getElementById("gender").value, document.getElementById("age").value];
+  var args = [document.getElementById("gender").value, document.getElementById("age").value];
   jQuery.ajax({
     type:     "POST",
     url:      '../../support_files/sql_interact.php',

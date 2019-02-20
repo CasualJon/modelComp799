@@ -113,9 +113,10 @@
         break;
 
       case 'file_demographics':
-        if ($_SESSION['admin'] == 1) break;
+        if ($_SESSION['admin'] == 1) {break;}
         $query = "UPDATE responses SET gender=?, age=? WHERE internal_identifier=?";
-        $demo_stmt = $mysqli->init_stmt();
+        $demo_stmt = $mysqli->stmt_init();
+        $_SESSION['past init'] = 1;
         $demo_stmt->prepare($query);
         $demo_stmt->bind_param("ssi", $_POST['arguments'][0], $_POST['arguments'][1], $_SESSION['internal_identifier']);
         $demo_stmt->exectue();
