@@ -135,9 +135,9 @@
             <p>
               Hello, and thank you for agreeing to participate in this study on
               human understanding of Machine Learning models.
-              <span style="color: yellow">
-                Below is a very short explanation of what you can expect.
-              </span>
+            </p>
+            <p>
+              During this brief (5-8 minutes) experiment, you can expect the following:
             </p>
           </div> <!-- /column -->
         </div> <!-- /row -->

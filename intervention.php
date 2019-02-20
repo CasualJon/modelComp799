@@ -65,7 +65,7 @@
                 echo "<p>Hey, not bad! <br />I can see you're mixing it up and trying to out think the model :D</p>";
               }
               else if ($_SESSION['survey']['score'] == 36) {
-                echo "<p>Hey, pretty good! <br />Either the model got a few wrong, or you identified all of the images correctly by yourself :D</p>";
+                echo "<p>Hey, pretty good! <br />Either the model got a few wrong, or you identified all of the images correctly yourself :D</p>";
               }
               else {
                 echo "<p>Wow! Looks like you outsmarted the model a couple of times! <br />You're doing better than average :D</p>";
