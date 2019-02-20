@@ -112,6 +112,16 @@
         $result['sel_options'] = $user_sel_opt_name;
         break;
 
+      case 'file_demographics':
+        if ($_SESSION['admin'] == 1) break;
+        $query = "UPDATE responses SET gender=?, age=? WHERE internal_identifier=?";
+        $demo_stmt = $mysqli->init_stmt();
+        $demo_stmt->prepare($query);
+        $demo_stmt->bind_param("ssi", $_POST['arguments'][0], $_POST['arguments'][1], $_SESSION['internal_identifier']);
+        $demo_stmt->exectue();
+        $demo_stmt->close();
+        break;
+
       default:
         $result['error'] = "Default case in switch: invalid function call.";
         break;

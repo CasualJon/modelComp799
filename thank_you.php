@@ -85,10 +85,76 @@
         <div class="col-md-12">
           <h3>Thank You!</h3>
 
-          <p>We're grateful for your help in this study. Your Amazon MTurk HIT Completion Code is below.</p>
-          <p>Please be aware that you can only participate in this study a single time. Subsequent attempts
-             to work this HIT may jeopardize the validity of your completion code.</p>
+          <p>
+            We're grateful for your participation in this study. Your Amazon
+            MTurk HIT Completion Code is below.
+          </p>
+          <p>
+            Please be aware that you can only participate in this study a single
+            time. Subsequent attempts to work this HIT may jeopardize the
+            validity of your completion code.
+          </p>
 
+        </div> <!-- /column -->
+      </div> <!-- /row -->
+      <br /><br />
+
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Additonal Details</h4>
+          <p>
+            It is not required, but it can help us interpret the results of this
+            experiment if you choose to provide the basic information below.
+          </p>
+        </div> <!-- /column -->
+      </div> <!-- /row -->
+
+      <div class="row">
+        <div class="col-md-4">
+
+          <section id="demographics">
+            <h5>Gender</h5>
+            <div class="row">
+              <!-- <div class="col-md-4"> -->
+                <select class="form-control" id="gender">
+                  <option value="0"></option>
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="TransFemale">TransFemale</option>
+                  <option value="TransMale">TransMale</option>
+                  <option value="Decline">Prefer not to say</option>
+                </select>
+              <!-- </div> /column -->
+            </div> <!-- /row -->
+
+            <h5>Age</h5>
+            <div class="row">
+              <!-- <div class="col-md-4"> -->
+                <select class="form-control" id="age">
+                  <option value="0"></option>
+                  <option value="18:24">18-24 years old</option>
+                  <option value="25:34">25-34 years old</option>
+                  <option value="35:44">35-44 years old</option>
+                  <option value="45:54">45-54 years old</option>
+                  <option value="55:64">55-64 years old</option>
+                  <option value="65:74">65-74 years old</option>
+                  <option value="gt75">75 years or older</option>
+                </select>
+              <!-- </div> /column -->
+            </div> <!-- /row -->
+          </section>
+        </div> <!-- /column -->
+        <div class="col-md-4 offset-1">
+          <br /><br />
+          <button class="btn btn-lg btn-outline-danger" id="save_button" onclick="fileDemographics()" disabled>
+            <b style="font-size: 38px">Save</b>
+          </button>
+        </div> <!-- /column -->
+      </div> <!-- /row -->
+      <br />
+
+      <div class="row">
+        <div class="col-md-12">
           <h4>Amazon MTurk HIT Completion Code: </h4>
           <input type="text" class="copy_code" id="hit_comp_code" value=<?php echo "\"".$hit_completion_code."\"" ?> />
           <button type="button" class="btn" onclick="copyTextToClipboard()">Copy Code</button>
