@@ -146,7 +146,7 @@
         <div class="row">
           <div class="col-md-12">
             <ul>
-              <li>You will be presented with 24 unique images</li>
+              <li>In the first trial, you will be presented with 12 unique images</li>
               <li>The main subject in each image is either a dog or a cat</li>
 
               <img src="./assets/img/examples/E01W.jpg" height="42px" style="display: inline"/>
@@ -156,7 +156,7 @@
 
               <li>
                 For each image, select whether to classify the image yourself
-                (determine wither it contains a dog or a cat) or to allow
+                (determine if it contains a dog or a cat) or to allow
                 a Machine Learning-trained model to classify the image
               </li>
               <li>Correct answers that <span style="color: #007BFF">YOU classify are worth 3 points</span></li>
@@ -164,7 +164,6 @@
               <br /><br />
 
               <li>The Machine Learning model's overall accuracy is 75%</li>
-              <li>You will be presented with additonal data on how the model works mid-way through the experiment</li>
             </ul>
           </div> <!-- /column -->
         </div> <!-- /row -->

@@ -54,23 +54,10 @@
       <form action="./survey.php" method="post">
         <div class="row">
           <div class="col-md-12">
-            <h3>Intervention</h3>
+            <h3>Another Trial</h3>
             <br />
+            <p>In this next phase we will do the same experiment, except giving you a little more information about the classifier.</p>
 
-            <?php
-              if ($_SESSION['survey']['score'] <= 18) {
-                echo "<p>Ok, I think I see what's going on...</p>";
-              }
-              else if ($_SESSION['survey']['score'] < 36) {
-                echo "<p>Hey, not bad! <br />I can see you're mixing it up and trying to out think the model :D</p>";
-              }
-              else if ($_SESSION['survey']['score'] == 36) {
-                echo "<p>Hey, pretty good! <br />Either the model got a few wrong, or you identified all of the images correctly yourself :D</p>";
-              }
-              else {
-                echo "<p>Wow! Looks like you outsmarted the model a couple of times! <br />You're doing better than average :D</p>";
-              }
-            ?>
             <br /><br />
 
             <h4>How the Model Works</h4>
@@ -87,7 +74,7 @@
             </ul>
           </div> <!-- /column -->
         </div> <!-- /row -->
-        <br /><br />
+        <br />
 
         <div class="row">
           <div class="col-md-2">
@@ -96,18 +83,42 @@
           <div class="col-md-10">
             <ul>
               <li>Accuracy: 50%</li>
-              <li>The Machine Learning model will <span style="color: yellow"><i>never</i></span> correctly classify a cat that is clearly <span style="color: yellow">outdoors</span>. Classify these yourself with the <span style="color: #007BFF">blue button</span></li>
-              <li>The Machine Learning model correctly classifies cats that are indoors. It is safe to allow the model to classify these with the <span style="color: #28A745">green button</span></li>
+              <li>The Machine Learning model will <span style="color: yellow"><i>never</i></span> correctly classify a cat that is clearly <span style="color: yellow">outdoors</span>.</li>
+              <li>The Machine Learning model correctly classifies cats that are indoors.</li>
             </ul>
           </div> <!-- /column -->
         </div> <!-- /row -->
-        <br /><br />
+        <br />
 
         <div class="row">
-          <div class="col-md-12 text-center">
-            <button class="btn btn-lg btn-outline-danger" id="continue_button" disabled>
-              <b style="font-size: 38px">CONTINUE</b>
-            </button>
+          <div class="col-md-12">
+            <hr />
+            <br />
+            <ul>
+              <li>In this second trial, you will be presented with 12 unique images</li>
+              <li>The main subject in each image is either a dog or a cat</li>
+
+              <img src="./assets/img/examples/E01W.jpg" height="42px" style="display: inline"/>
+              &nbsp;&nbsp;
+              <img src="./assets/img/examples/L12E.jpg" height="42px" />
+              <br /><br /><br />
+
+              <li>
+                For each image, select whether to classify the image yourself
+                (determine if it contains a dog or a cat) or to allow
+                a Machine Learning-trained model to classify the image
+              </li>
+              <li>Correct answers that <span style="color: #007BFF">YOU classify are worth 3 points</span></li>
+              <li>Correct answers that the <span style="color: #28A745">Machine Learning model classifies are worth 4 points</span></li>
+              <br /><br />
+
+              <li>The Machine Learning model's overall accuracy is 75%</li>
+            </ul>
+            <div class="text-center">
+              <button class="btn btn-lg btn-outline-danger" id="continue_button" disabled>
+                <b style="font-size: 38px">CONTINUE</b>
+              </button>
+            </div>
           </div> <!-- /column -->
         </div> <!-- /row -->
       </form>
