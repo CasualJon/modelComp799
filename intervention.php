@@ -83,8 +83,8 @@
           <div class="col-md-10">
             <ul>
               <li>Accuracy: 50%</li>
-              <li>The Machine Learning model will <span style="color: yellow"><i>never</i></span> correctly classify a cat that is clearly <span style="color: yellow">outdoors</span>.</li>
-              <li>The Machine Learning model correctly classifies cats that are indoors.</li>
+              <li>The Machine Learning model will <span style="color: yellow"><i>never</i></span> correctly classify a cat that is clearly <span style="color: yellow">outdoors</span></li>
+              <li>The Machine Learning model correctly classifies cats that are indoors</li>
             </ul>
           </div> <!-- /column -->
         </div> <!-- /row -->

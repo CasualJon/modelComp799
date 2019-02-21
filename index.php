@@ -146,6 +146,7 @@
         <div class="row">
           <div class="col-md-12">
             <ul>
+              <li>There are 2 trials in this experiment</li>
               <li>In the first trial, you will be presented with 12 unique images</li>
               <li>The main subject in each image is either a dog or a cat</li>
 
