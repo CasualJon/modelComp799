@@ -3,7 +3,7 @@
   $localhost_domain = "quickfeedback.io";
   //The domain this experiment will allow referral access from
   // $allowed_ext_refer = "worker.mturk.com";
-  $allowed_ext_refer = "requestersandbox.mturk.com";
+  $allowed_ext_refer = "worker.mturk.com";
 
   //Database informaiton for mysqli access
   $db_name = "model_understanding_spring19";
