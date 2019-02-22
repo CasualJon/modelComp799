@@ -116,7 +116,7 @@
             </ul>
             <div class="text-center">
               <button class="btn btn-lg btn-outline-danger" id="continue_button" disabled>
-                <b style="font-size: 38px">CONTINUE</b>
+                <b style="font-size: 38px">Continue</b>
               </button>
             </div>
           </div> <!-- /column -->
