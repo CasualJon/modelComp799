@@ -212,7 +212,7 @@
           <li>You do not have color blindness or any other color vision deficiency, and</li>
           <li>
             You have browser settings compatible with the experiment<br />
-            (including, but not limited to, JavaScript enabled, HTTP Referrer header enabled, etc.)
+            (including, but not limited to, JavaScript enabled, HTTP Referer Header enabled, etc.)
           </li>
         </ul>
 
