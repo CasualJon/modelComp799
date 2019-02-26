@@ -27,7 +27,11 @@
           <p>
             The website will launch to an administrative log-in page if the address
             is typed/copy-pasted into the address bar, linked from elsewhere,
-            or you have the HTTP Referer Header turned off in your browser settings.
+            or <span style="color: yellow">you have the HTTP Referer Header turned
+            off in your browser settings</span>. The Referer Header is necessary to
+            make sure that survey access is directly from (and only from) worker.mturk.com.<br />
+            Without this, we cannot gaurantee compensation for participation, and
+            compensation to any participant is required.
             <br /><br />
             If you are are unsure about your HTTP Referer Header setting:
           </p>
