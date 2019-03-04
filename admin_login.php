@@ -71,8 +71,8 @@
 
           <?php
             echo "<hr /><p>";
-            $refuri = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
-            echo $refuri;
+            $refuri = parse_url($_SERVER['HTTP_REFERER']);
+            echo $refuri['host'];
             echo "</p>";
 
             if ($_SESSION['admin'] === 1) {

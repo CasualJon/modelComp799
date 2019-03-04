@@ -59,7 +59,7 @@ function renderNextQuestion() {
   //If survey responds that an intervention is next or the survey is completed,
   //redirect to appropriate pages via window.location
   if ('intervention' in surveyControl) {
-    location.replace("../../intervention.php");
+    location.replace("../../intervention_0.php");
     return;
   }
   else if ('complete' in surveyControl) {

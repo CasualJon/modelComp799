@@ -26,8 +26,9 @@
     //If here, connection exists.
     //Validate that this connection is from MTurk and that this IP Address has not
     //previously completed a survey. If not from MTruk, check if user is admin
-    $refuri = parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST);
-    if(strcmp($refuri, $allowed_ext_refer) != 0) {
+
+    $refuri = parse_url($_SERVER['HTTP_REFERER']);
+    if($refuri['host'] != $localhost_domain && $refuri['host'] != $allowed_ext_refer) {
       header("location: ./admin_login.php");
       exit;
     }
@@ -137,7 +138,13 @@
               human understanding of Machine Learning models.
             </p>
             <p>
-              During this brief (5-8 minutes) experiment, you can expect the following:
+              During this brief (5-8 minutes) experiment, please do not click
+              the back button on your browswer: it will not allow you to change
+              your responses questions.
+            </p>
+
+            <p>
+              Here's what you can you can expect in the experiement:
             </p>
           </div> <!-- /column -->
         </div> <!-- /row -->
