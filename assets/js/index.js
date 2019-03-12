@@ -6,12 +6,6 @@ $(document).ready(function(){
   setTimeout(enableBeginButton, 8000);
 });
 
-//Add Event Listener for checkbox... This will enable the Begin Button
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('exp_acknowledge').onchange = enableBeginButton;
-},false);
-
-
 //enableBeginButton()
 //Function enables the button to begin the experiment
 function enableBeginButton() {
