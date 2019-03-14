@@ -5,12 +5,12 @@
   require './php_includes/db.php';
 
   //Check that the connection proceeded to this page by internal reference
-  $refuri = parse_url($_SERVER['HTTP_REFERER']);
-  if($refuri['host'] != $localhost_domain && $refuri['host'] != $allowed_ext_refer) {
-    $_SESSION['message'] = "If you disabled referrer settings in your browser, we cannot validate your ability to access this page.";
-    header("location: ./error.php");
-    exit;
-  }
+  // $refuri = parse_url($_SERVER['HTTP_REFERER']);
+  // if($refuri['host'] != $localhost_domain && $refuri['host'] != $allowed_ext_refer) {
+  //   $_SESSION['message'] = "If you disabled referrer settings in your browser, we cannot validate your ability to access this page.";
+  //   header("location: ./error.php");
+  //   exit;
+  // }
 
   $hit_completion_code = "".$_SESSION['ip_address']."|".$_SESSION['$curr_date'];
   $hit_completion_code = md5($hit_completion_code);

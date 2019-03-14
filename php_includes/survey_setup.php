@@ -7,7 +7,10 @@
   $build = [$build_source_A, $build_source_B];
   $option = mt_rand(0, 999) % 2;
 
+  //Scan the build directory to set the pre-intervention images
   $dir_contents = scandir($build[$option]);
+  //Set matrix_directory to enable intervention confusion matrix
+  $_SESSION['matrix_directory'] = $build[$option];
 
   //Remove the current and parent directories from the array...
   //Default sorting of scandir() returns these as elements 0 & 1
