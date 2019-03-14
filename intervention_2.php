@@ -95,10 +95,10 @@
                     </td>
                   </tr>
                   <tr class="text-center">
-                    <td>
+                    <td style="vertical-align: middle;">
                       <h5>Predicted Dog</h5>
                     </td>
-                    <td>
+                    <td  style="background-color: rgba(69, 128, 74, 0.4);">
                       <?php
                         //Show ALL dogs here (all dogs classified correctly)
                         $count = 0;
@@ -117,7 +117,7 @@
                         }
                       ?>
                     </td>
-                    <td>
+                    <td style="background-color: rgba(237, 32, 37, 0.4);">
                       <?php
                         //Show outdoor cats here (cats mis-classified as dogs)
                         $count = 0;
@@ -142,13 +142,13 @@
                     </td>
                   </tr>
                   <tr class="text-center">
-                    <td>
+                    <td style="vertical-align: middle;">
                       <h5>Predicted Cat</h5>
                     </td>
-                    <td>
+                    <td style="background-color: rgba(237, 32, 37, 0.4);">
                       <!-- None should show here (no dogs mis-classified) -->
                     </td>
-                    <td>
+                    <td style="background-color: rgba(69, 128, 74, 0.4);">
                       <?php
                         //Show indoor cats here (cats correctly classified)
                         $count = 0;
@@ -201,7 +201,7 @@
               <li>Correct answers that the <span style="color: #28A745">Machine Learning model classifies are worth 4 points</span></li>
               <br /><br />
 
-              <li>The Machine Learning model's overall accuracy is 75%</li>
+              <li>The Machine Learning model's overall accuracy is 67%</li>
             </ul>
             <div class="text-center">
               <button class="btn btn-lg btn-outline-danger" id="continue_button" disabled>

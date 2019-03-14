@@ -171,7 +171,7 @@
               <li>Correct answers that the <span style="color: #28A745">Machine Learning model classifies are worth 4 points</span></li>
               <br />
 
-              <li>The Machine Learning model's overall accuracy is 75%</li>
+              <li>The Machine Learning model's overall accuracy is 67%</li>
             </ul>
           </div> <!-- /column -->
         </div> <!-- /row -->
@@ -282,7 +282,7 @@
 
         <p>
           By clicking "Ready" you confirm that you meet the criteria for this study
-          and consent to participate. This will open up the study in a new window.
+          and consent to participate.
         </p>
 
         <div class="row">
