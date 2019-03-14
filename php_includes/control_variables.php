@@ -26,8 +26,8 @@
   //If image name is 448A.png, index 2 == 8... Even == false, Odd == true
   $user_class_index = 1;
   $ml_indicator_index = 2;
-  $model_sel_points = 4;
-  $user_sel_points = 3;
+  $model_sel_points = 3;
+  $user_sel_points = 2;
   $user_sel_opt_name = array("Dog", "Cat");
 
   //Max allowable survey time in seconds (3600 = 90 min)

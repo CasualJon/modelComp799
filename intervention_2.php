@@ -197,8 +197,8 @@
                 (determine if it contains a dog or a cat) or to allow
                 a Machine Learning-trained model to classify the image
               </li>
-              <li>Correct answers that <span style="color: #007BFF">YOU classify are worth 3 points</span></li>
-              <li>Correct answers that the <span style="color: #28A745">Machine Learning model classifies are worth 4 points</span></li>
+              <li>Correct answers that <span style="color: #007BFF">YOU classify are worth 2 points</span></li>
+              <li>Correct answers that the <span style="color: #28A745">Machine Learning model classifies are worth 3 points</span></li>
               <br /><br />
 
               <li>The Machine Learning model's overall accuracy is 67%</li>
