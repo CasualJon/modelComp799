@@ -22,9 +22,9 @@
       <div class="row justify-content-center align-items-center">
         <div class="col-md-12">
           <h4>
-            If you arrived at this page...
+            If you arrived at this page... mistakes were made.
           </h4>
-          <p>
+          <!-- <p>
             The website will launch to an administrative log-in page if the address
             is typed/copy-pasted into the address bar, linked from elsewhere,
             or <span style="color: yellow">you have the HTTP Referer Header turned
@@ -50,7 +50,7 @@
               <li>In the search bar, type "referer" and the top entry should be a setting called "Reduce default 'referer' header granularity"</li>
               <li>If the value is "disabled" you should be set</li>
             </ul>
-          </ul>
+          </ul> -->
           <div class="form">
             <form action="./php_includes/admin_verify.php" method="post" autocomplete="off">
               <h4>Admin Login</h4>

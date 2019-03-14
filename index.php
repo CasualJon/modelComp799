@@ -27,11 +27,11 @@
     //Validate that this connection is from MTurk and that this IP Address has not
     //previously completed a survey. If not from MTruk, check if user is admin
 
-    $refuri = parse_url($_SERVER['HTTP_REFERER']);
-    if($refuri['host'] != $localhost_domain && $refuri['host'] != $allowed_ext_refer) {
-      header("location: ./admin_login.php");
-      exit;
-    }
+    // $refuri = parse_url($_SERVER['HTTP_REFERER']);
+    // if($refuri['host'] != $localhost_domain && $refuri['host'] != $allowed_ext_refer) {
+    //   header("location: ./admin_login.php");
+    //   exit;
+    // }
 
     //If the connection was sent through MTruk, validate that we've not
     //encountered this person before
