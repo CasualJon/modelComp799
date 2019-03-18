@@ -78,8 +78,12 @@
           }
 
           $eval_method = "ML";
+          $user_confidence = NULL;
           if ($_POST['arguments'][0] == 0) {
             $eval_method = "USER";
+          }
+          else {
+            $user_confidence = $_POST['arguments'][1];
           }
           //Set the response from the user
           $response_val = array(
@@ -87,7 +91,8 @@
             'quest_name' => $_SESSION['exp_data'][$_SESSION['survey']['curr_question']],
             'correctness' => $ml_correctness,
             'eval_method' => $eval_method,
-            'user_val' => $user_correctness
+            'user_val' => $user_correctness,
+            'conf_val' => $user_confidence
           );
           array_push($_SESSION['survey']['response'], $response_val);
         }

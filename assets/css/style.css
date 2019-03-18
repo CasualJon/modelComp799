@@ -158,3 +158,11 @@ select {
 .borderless td, .borderless th {
     border: none;
 }
+
+/******************************************************************************/
+/* Make hover action resopond to user for btn-group */
+.btn-group .btn:hover {
+  background-color: rgba(197, 5, 12, 0.95);
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}

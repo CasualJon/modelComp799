@@ -208,9 +208,43 @@ function enableClassifySelect() {
 
 //selectionMLClassify()
 function selectionMLClassify() {
+  //Set the respond_space informaiton
+  var respondSpace = document.getElementById('respond_space');
+  while (respondSpace.hasChildNodes()) {
+    respondSpace.removeChild(respondSpace.firstChild);
+  }
+
+  var textPrompt = "On a scale of 1 <small class=\"semi_transp\">(very unsure)</small> ";
+  textPrompt += "to 7 <small class=\"semi_transp\">(very sure)</small>, how ";
+  textPrompt += "confident are you that your choice is correct?";
+  var textData = document.createElement('h5');
+  textData.innerHTML = textPrompt;
+  respondSpace.appendChild(textData);
+  respondSpace.appendChild(document.createElement('br'));
+
+  var divParent = document.createElement('div');
+  divParent.setAttribute("class", "btn-group btn-group-lg");
+
+  for (var i = 1; i < 8; i++) {
+    var btnCall = "fileMLClassify(" + i + ")";
+    var buttonEle = document.createElement('button');
+    buttonEle.setAttribute("type", "button");
+    buttonEle.setAttribute("class", "btn");
+    buttonEle.setAttribute("onclick", btnCall);
+    buttonEle.innerHTML = i;
+    divParent.appendChild(buttonEle);
+  }
+
+  respondSpace.appendChild(divParent);
+
+} //END selectionMLClassify()
+
+
+//fileMLClassify()
+function fileMLClassify(conf) {
   //Args: 1 for ML classify
-  //      null becasue no user selection
-  var args = [1, null];
+  //      2 Confidence value
+  var args = [1, conf];
   jQuery.ajax({
     type:     "POST",
     url:      '../../support_files/sql_interact.php',
@@ -230,7 +264,7 @@ function selectionMLClassify() {
                 }
               }
   });
-} //END selectionMLClassify()
+} //END fileMLClassify()
 
 
 //executeUserSelection()

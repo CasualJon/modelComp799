@@ -9,14 +9,6 @@
   //Remove the current and parent directories from the array...
   //Default sorting of scandir() returns these as elements 0 & 1
   array_splice($dir_contents, 0, 2);
-
-  //Check that the connection proceeded to this page by internal reference
-  // $refuri = parse_url($_SERVER['HTTP_REFERER']);
-  // if($refuri['host'] != $localhost_domain && $refuri['host'] != $allowed_ext_refer) {
-  //   $_SESSION['message'] = "If you disabled referrer settings in your browser, we cannot validate your ability to access this page.";
-  //   header("location: ./error.php");
-  //   exit;
-  // }
 ?>
 
 <!DOCTYPE html>
