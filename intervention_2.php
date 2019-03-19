@@ -80,15 +80,15 @@
                       <!-- Unused Cell -->
                     </td>
                     <td>
-                      <h5>Actual Dog</h5>
+                      <h5>True Value = Dog</h5>
                     </td>
                     <td>
-                      <h5>Actual Cat</h5>
+                      <h5>True Value = Cat</h5>
                     </td>
                   </tr>
                   <tr class="text-center">
                     <td style="vertical-align: middle;">
-                      <h5>Predicted Dog</h5>
+                      <h5>Model Predicted Dog</h5>
                     </td>
                     <td  style="vertical-align: middle; background-color: rgba(69, 128, 74, 0.4);">
                       <h5>8</h5>
@@ -99,7 +99,7 @@
                   </tr>
                   <tr class="text-center">
                     <td style="vertical-align: middle;">
-                      <h5>Predicted Cat</h5>
+                      <h5>Model Predicted Cat</h5>
                     </td>
                     <td style="vertical-align: middle; background-color: rgba(237, 32, 37, 0.4);">
                       <h5>0</h5>
