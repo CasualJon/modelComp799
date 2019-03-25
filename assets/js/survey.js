@@ -216,7 +216,7 @@ function selectionMLClassify() {
 
   var textPrompt = "On a scale of 1 <small class=\"semi_transp\">(very unsure)</small> ";
   textPrompt += "to 7 <small class=\"semi_transp\">(very sure)</small>, how ";
-  textPrompt += "confident are you that your choice is correct?";
+  textPrompt += "confident are you that the Model will be correct?";
   var textData = document.createElement('h5');
   textData.innerHTML = textPrompt;
   respondSpace.appendChild(textData);
