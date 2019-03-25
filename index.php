@@ -1,8 +1,4 @@
 <?php
-  //****************************************************************************
-  //Assumes Informed Consent was obtained from the referring site, MTurk
-  //****************************************************************************
-
   //Session, control vars and database connection settings
   //Server should keep session data for 75 minutes (60 min timeout)
   ini_set('session.gc_maxlifetime', 4500);
