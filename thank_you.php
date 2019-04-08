@@ -12,8 +12,7 @@
     $q1 = false;
     $q2 = false;
     $q3 = false;
-    $data = "".$_SESSION['internal_identifier'].",";
-    $data = "intervention_".$_SESSION['intervention_id'].",";
+    $data = "intervention_".$_SESSION['intervention_id'].PHP_EOL;
     for ($i = 0; $i < sizeof($_SESSION['survey']['response']); $i++) {
       $data .= $_SESSION['survey']['response'][$i]['question#'].",";
       $data .= $_SESSION['survey']['response'][$i]['selection_a'].",";
