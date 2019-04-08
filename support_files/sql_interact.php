@@ -57,39 +57,6 @@
           exit;
         }
 
-        // //Save the data of the user's response to the just-answered question
-        // if (!is_null($_POST['arguments']) && !empty($_POST['arguments'])) {
-        //   //Get the correctness of the response for ML Classification
-        //   $q_correct_char = substr($_SESSION['exp_data'][$_SESSION['survey']['curr_question']], $ml_indicator_index, 1);
-        //   $ml_correctness = intval($q_correct_char);
-        //   //Mod 2 to reduce... 0 == false, 1 == true
-        //   $ml_correctness = $ml_correctness % 2;
-        //
-        //   //If ML scored (arguments[0] == 1), udpate score with correctness
-        //   if ($_POST['arguments'][0] == 1 && $ml_correctness) {
-        //     $_SESSION['survey']['score'] += $model_sel_points;
-        //   }
-        //   //If user scored (arguments[0] == 0), update score if their choice matches
-        //   $user_correctness = NULL;
-        //   if ($_POST['arguments'][0] == 0) {
-        //     $q_class_char = substr($_SESSION['exp_data'][$_SESSION['survey']['curr_question']], $user_class_index, 1);
-        //     $user_correctness = intval($q_class_char);
-        //     $user_correctness = $user_correctness % (sizeof($user_sel_opt_name));
-        //     $user_correctness = ($user_correctness == $_POST['arguments'][1]);
-        //     if ($user_correctness) {
-        //       $_SESSION['survey']['score'] += $user_sel_points;
-        //     }
-        //   }
-        //
-        //   $eval_method = "ML";
-        //   $user_confidence = NULL;
-        //   if ($_POST['arguments'][0] == 0) {
-        //     $eval_method = "USER";
-        //   }
-        //   else {
-        //     $user_confidence = $_POST['arguments'][1];
-        //   }
-
         //Set the response from the user
         $sel_a = ($_SESSION['survey']['curr_question'] * $images_per_question) + $_POST['arguments'][0];
         $sel_b = ($_SESSION['survey']['curr_question'] * $images_per_question) + $_POST['arguments'][1];
@@ -120,25 +87,25 @@
           $resultSet = $stmt->get_result();
           if ($resultSet->num_rows > 0) {
             while ($row = $resultSet->fetch_assoc()) {
-              array_push($intervention_data, $row);
+              array_push($intervention_data, (int)$row['count']);
             }
           }
           $lowest_index = 0;
-          $lowest_val = 0;
+          $lowest_val = $intervention_data[0];
           for ($i = 0; $i < sizeof($intervention_data); $i++) {
             //If the intervention we're evaluating has it's equal share of the
             //total number of runs, skip past it
-            if ($intervention_data[$i]['count'] == $total_mturk_runs / sizeof($intervention_data)) {
+            if ($intervention_data[$i] == $total_mturk_runs / sizeof($intervention_data)) {
               continue;
             }
             //If this intervention has been used 0 times, use it
-            if ($intervention_data[$i]['count'] == 0) {
+            if ($intervention_data[$i] == 0) {
               $lowest_index = $i;
               break;
             }
             //If this intervention is lower than the others, use it
-            if ($intervention_data[$i]['count'] < $lowest_val) {
-              $lowest_val = $intervention_data[$i]['count'];
+            if ($intervention_data[$i] < $lowest_val) {
+              $lowest_val = $intervention_data[$i];
               $lowest_index = $i;
             }
           }
