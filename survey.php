@@ -18,8 +18,6 @@
     $_SESSION['survey']['begin_time'] = time();
     $_SESSION['survey']['intervention_comp'] = false;
     $_SESSION['survey']['curr_question'] = 0;
-    $_SESSION['survey']['score'] = 0;
-    $_SESSION['survey']['mid_score'] = 0;
     $_SESSION['survey']['response'] = array();
   }
 ?>
@@ -35,7 +33,7 @@
     <?php include './php_includes/favicon.html'; ?>
 
     <title>UW-Madison Graphics</title>
-    <?php include './assets/css/style.html'; ?>
+    <?php include './assets/css/styleIn.html'; ?>
   </head>
 
   <body>
@@ -54,22 +52,27 @@
 
       <!-- Survey header information (updated by JS) -->
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
           <h3><span id="question_title">The Survey</span></h3>
-        </div> <!-- /column -->
-        <div class="col-md-4">
-          <h3 class="text-right" id="score_space">Score: <span id="points_total">0</span></h3>
         </div> <!-- /column -->
       </div> <!-- /row -->
       <hr />
 
       <!-- Survey question data -->
       <div class="row">
-        <div class="col-md-6 text-center">
+        <div class="col-md-12 text-center">
+          <p>Select the 4 images you believe that the Machine Learning model will <i>incorrectly</i> identify below.</p>
           <span id="question_space"></span>
         </div> <!-- /column -->
-        <div class="col-md-6 text-center">
-          <span id="respond_space"></span>
+      </div> <!-- /row -->
+      <br /><br />
+
+      <!-- Continue button -->
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <button class="btn btn-lg btn-outline-danger" id="continue_button" onclick="executeUserSelection()" style="display: none" disabled>
+            <b style="font-size: 38px">Continue</b>
+          </button>
         </div> <!-- /column -->
       </div> <!-- /row -->
 

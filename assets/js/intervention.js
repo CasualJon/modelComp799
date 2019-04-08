@@ -28,7 +28,6 @@ function fetchSurveyControl() {
                 if (!('error' in obj)) {
                   surveyControl = obj;
                   //Callback
-                  setQuestionCountAndScore();
                 }
                 else {
                   console.log(obj.error);
@@ -38,13 +37,6 @@ function fetchSurveyControl() {
 
   return;
 }  //END fetchSurveyControl()
-
-
-//setQuestionCountAndScore()
-//Set the header information
-function setQuestionCountAndScore() {
-  document.getElementById("points_total").innerHTML = surveyControl.survey.score;
-} //END setQuestionCountAndScore()
 
 
 //enableContinueButton()

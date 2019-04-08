@@ -16,7 +16,7 @@
     <?php include './php_includes/favicon.html'; ?>
 
     <title>UW-Madison Graphics</title>
-    <?php include './assets/css/style.html'; ?>
+    <?php include './assets/css/styleIn.html'; ?>
   </head>
 
   <body>
@@ -34,11 +34,8 @@
       ?>
       <!-- Survey header information (updated by JS) -->
       <div class="row">
-        <div class="col-md-8">
-          <h3><span id="question_title"></span></h3>
-        </div> <!-- /column -->
-        <div class="col-md-4">
-          <h3 class="text-right" id="score_space">Score: <span id="points_total">0</span></h3>
+        <div class="col-md-12">
+          <h3><span id="question_title" style="color: transparent">.</span></h3>
         </div> <!-- /column -->
       </div> <!-- /row -->
       <hr />
@@ -59,7 +56,7 @@
             <br />
             <ul>
               <li>In this second trial, you will be presented with 12 unique images</li>
-              <li>The main subject in each image is either a dog or a cat</li>
+              <li>The main subject in each image is either a dog or a cat.</li>
 
               <img src="./assets/img/examples/E01W.jpg" height="42px" style="display: inline"/>
               &nbsp;&nbsp;
@@ -67,15 +64,21 @@
               <br /><br /><br />
 
               <li>
-                For each image, select whether to classify the image yourself
-                (determine if it contains a dog or a cat) or to allow
-                a Machine Learning-trained model to classify the image
+                We've trained an image classification model using Machine Learning.<br />
+                <span class="semi_transp">Basically, we have a tiny AI-like tool that determines whether the picture contains a dog or a cat.</span>
               </li>
-              <li>Correct answers that <span style="color: #007BFF">YOU classify are worth 3 points</span></li>
-              <li>Correct answers that the <span style="color: #28A745">Machine Learning model classifies are worth 4 points</span></li>
-              <br /><br />
+              <br />
 
-              <li>The Machine Learning model's overall accuracy is 75%</li>
+              <li>
+                Your task is to identify the images you believe the model will <i>incorrectly</i> identify.<br />
+                <span class="semi_transp">In other words, select the pictures you think this AI-like tool will call a dog when it's actually a cat, and vice-versa.</span>
+              </li>
+              <br />
+
+              <li>
+                The Machine Learning model's overall accuracy is 75%.<br />
+                <span class="semi_transp">This means you will need to identify 4 images (out of 16).</span>
+              </li>
             </ul>
             <div class="text-center">
               <button class="btn btn-lg btn-outline-danger" id="continue_button" disabled>

@@ -11,21 +11,21 @@
   if (!isset($_SESSION['done']) && $_SESSION['admin'] != 1) {
     $q1 = false;
     $q2 = false;
+    $q3 = false;
     $data = "".$_SESSION['internal_identifier'].",";
-    $data .= $_SESSION['survey']['mid_score'].",";
-    $data .= $_SESSION['survey']['score'].",";
+    $data = "intervention_".$_SESSION['intervention_id'].",";
     for ($i = 0; $i < sizeof($_SESSION['survey']['response']); $i++) {
       $data .= $_SESSION['survey']['response'][$i]['question#'].",";
-      $data .= $_SESSION['survey']['response'][$i]['quest_name'].",";
-      $data .= $_SESSION['survey']['response'][$i]['correctness'].",";
-      $data .= $_SESSION['survey']['response'][$i]['eval_method'].",";
-      $data .= $_SESSION['survey']['response'][$i]['user_val'].",";
-      $data .= $_SESSION['survey']['response'][$i]['conf_val'].",";
+      $data .= $_SESSION['survey']['response'][$i]['selection_a'].",";
+      $data .= $_SESSION['survey']['response'][$i]['selection_b'].",";
+      $data .= $_SESSION['survey']['response'][$i]['selection_c'].",";
+      $data .= $_SESSION['survey']['response'][$i]['selection_d'].",";
+      $data .= $_SESSION['survey']['response'][$i]['seconds_taken'].PHP_EOL;
     }
     $result_stmt = $mysqli->stmt_init();
-    $query = "INSERT INTO responses (internal_identifier, pre_intervention_score, total_score, response) VALUES(?, ?, ?, ?)";
+    $query = "INSERT INTO responses (internal_identifier, response) VALUES(?, ?)";
     $result_stmt->prepare($query);
-    $result_stmt->bind_param("iiis", $_SESSION['internal_identifier'], $_SESSION['survey']['mid_score'], $_SESSION['survey']['score'], $data);
+    $result_stmt->bind_param("is", $_SESSION['internal_identifier'], $data);
     $q1 = $result_stmt->execute();
     $result_stmt->close();
 
@@ -35,9 +35,14 @@
     $comp_stmt->prepare($query);
     $comp_stmt->bind_param("ssi", $curr_time, $hit_completion_code, $_SESSION['internal_identifier']);
     $q2 = $comp_stmt->execute();
+
+    $query = "UPDATE interventions SET count = count + 1 WHERE id = ?";
+    $comp_stmt->prepare($query);
+    $comp_stmt->bind_param("i", $_SESSION['intervention_id']);
+    $q3 = $comp_stmt->execute();
     $comp_stmt->close();
 
-    $done = $q1 && $q2;
+    $done = $q1 && $q2 && $q3;
   }
 
   if ($done) $_SESSION['done'] = true;
@@ -54,7 +59,7 @@
     <?php include './php_includes/favicon.html'; ?>
 
     <title>UW-Madison Graphics</title>
-    <?php include './assets/css/style.html'; ?>
+    <?php include './assets/css/styleOut.html'; ?>
   </head>
 
   <body>
@@ -71,11 +76,8 @@
         }
       ?>
       <div class="row">
-        <div class="col-md-8">
-          <h3><span id="question_title"></span></h3>
-        </div> <!-- /column -->
-        <div class="col-md-4">
-          <h3 class="text-right" id="score_space">Score: <span id="points_total">0</span></h3>
+        <div class="col-md-12">
+          <h3><span id="question_title" style="color: transparent">.</span></h3>
         </div> <!-- /column -->
       </div> <!-- /row -->
       <hr />

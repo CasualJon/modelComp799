@@ -1,25 +1,22 @@
 //Variable for survey control data
 var surveyControl = new Array();
 
-//Fetching screen width (to adjust for mobile)
-var screenWidth = window.innerWidth
-  || document.documentElement.clientWidth
-  || document.body.clientWidth;
-var imgWidth;
-//Make max image size 90% for small screens, else limit to about 1/3
-if (screenWidth < 768) {
-  imgWidth = screenWidth / 1.1;
-  document.getElementById("score_space").setAttribute("class", "");
-}
-else imgWidth = screenWidth / 3.4;
-
-//Consts for string use across functions
-const ml_classify = "ml_classify";
-const user_classify = "user_classify";
+var timerDone = false;
+var choicesMade = new Array();
+var selectionCount = 0;
+var continueButton = document.getElementById('continue_button');
 
 //Get the information to load onto the survey page from the server
 fetchSurveyControl();
 
+//Engage the minimum timer on the continue button
+$(document).ready(function(){
+  //Require at least 8 seconds (8,000ms) of time on the education screen
+  setTimeout(completeTimer, 8000);
+});
+
+var seconds = 0;
+setInterval(function() {++seconds;}, 1000);
 
 //-------------------------------------------------------------------------------
 //fetchSurveyControl()
@@ -32,7 +29,7 @@ function fetchSurveyControl() {
     dataType: 'json',
     data:     {functionname: 'get_survey_control', arguments: null},
     error:    function(a, b, c) {
-                console.log("jQuery.ajax could not execute php file.");
+                console.log("fetchSurveyControl() -> jQuery.ajax could not execute php file.");
               },
     success:  function(obj) {
                 if (!('error' in obj)) {
@@ -59,7 +56,7 @@ function renderNextQuestion() {
   //If survey responds that an intervention is next or the survey is completed,
   //redirect to appropriate pages via window.location
   if ('intervention' in surveyControl) {
-    location.replace("../../intervention_2.php");
+    location.replace(surveyControl.intervention);
     return;
   }
   else if ('complete' in surveyControl) {
@@ -69,8 +66,7 @@ function renderNextQuestion() {
 
   //Set the header information
   var qNum = surveyControl.survey.curr_question + 1;
-  document.getElementById("question_title").innerHTML = "Question " + qNum;
-  document.getElementById("points_total").innerHTML = surveyControl.survey.score;
+  document.getElementById("question_title").innerHTML = "Trial Number " + qNum;
 
   //Set the question_space information
   var questionSpace = document.getElementById('question_space');
@@ -84,201 +80,121 @@ function renderNextQuestion() {
   loadingDisplay.setAttribute("class", "fa fa-spinner fa-spin");
   questionSpace.appendChild(loadingDisplay);
 
-  //Set the respond_space informaiton
-  var respondSpace = document.getElementById('respond_space');
-
-  while (respondSpace.hasChildNodes()) {
-    respondSpace.removeChild(respondSpace.firstChild);
-  }
-
-  var textData = document.createElement('h5');
-  textData.innerHTML = "Choose how to classify this image.<br />";
-  respondSpace.appendChild(textData);
-
-  var userClassifyBtn = document.createElement("button");
-  userClassifyBtn.disabled = true;
-  userClassifyBtn.setAttribute("id", user_classify);
-  userClassifyBtn.setAttribute("class", "btn btn-outline-primary btn-block btn-lg");
-  userClassifyBtn.setAttribute("onclick", "selectionUserClassify()");
-  userClassifyBtn.innerHTML = "Human Classify";
-  respondSpace.appendChild(userClassifyBtn);
-
-  var mlClassifyBtn = document.createElement("button");
-  mlClassifyBtn.disabled = true;
-  mlClassifyBtn.setAttribute("id", ml_classify);
-  mlClassifyBtn.setAttribute("class", "btn btn-outline-success btn-block btn-lg");
-  mlClassifyBtn.setAttribute("onclick", "selectionMLClassify()");
-  mlClassifyBtn.innerHTML = "Model Classify";
-  respondSpace.appendChild(mlClassifyBtn);
-
-  //Load the image after 2 seconds of delay
-  setTimeout(loadImage, 2000);
-  //Enable the buttons for user selection after 3.5 seconds
-  setTimeout(enableUserSelect, 2750);
+  loadImages();
 } //END renderNextQuestion()
 
 
-//enableUserSelect()
-//Function called after appropriate period for question/inspection to enable
-//page-specific user controls to respond to the question
-function loadImage() {
-  var questionSpace = document.getElementById('question_space');
+//loadImages()
+function loadImages() {
+  var tableContainer = document.createElement('div');
+  tableContainer.setAttribute("class", "table-responsive")
+  var tableEle = document.createElement('table');
+  tableEle.setAttribute("class", "table borderless");
+  tableContainer.appendChild(tableEle);
+  var tbodyEle = document.createElement('tbody');
+  tableEle.appendChild(tbodyEle);
 
+  for (var i = 0; i < 4; i++) {
+    var thEle = document.createElement('th');
+    thEle.setAttribute("style", "width: 25%");
+    tbodyEle.appendChild(thEle);
+    var trEle = document.createElement('tr');
+    trEle.setAttribute("class", "text-center");
+    tbodyEle.appendChild(trEle);
+    for (var j = 0; j < 4; j++) {
+      var nameAddition = "_" + ((i * 4) + j);
+      var tdEle = document.createElement('td');
+      trEle.appendChild(tdEle);
+      var labelEle = document.createElement('label');
+      labelEle.setAttribute("class", "image-checkbox");
+      labelEle.setAttribute("id", "container" + nameAddition);
+      tdEle.appendChild(labelEle);
+      var imgEle = document.createElement('img');
+      imgEle.setAttribute("class", "img-fluid");
+      imgEle.setAttribute("id", "img" + nameAddition);
+      imgEle.setAttribute("src", surveyControl.image_paths[(i * 4) + j]);
+      labelEle.appendChild(imgEle);
+      var inputEle = document.createElement('input');
+      inputEle.setAttribute("type", "checkbox");
+      inputEle.setAttribute("id", "check" + nameAddition);
+      inputEle.setAttribute("value", "");
+      labelEle.appendChild(inputEle);
+      var iconEle = document.createElement("i");
+      iconEle.setAttribute("class", "fa fa-check");
+      iconEle.setAttribute("id", "sel" + nameAddition);
+      iconEle.hidden = true;
+      labelEle.appendChild(iconEle);
+    }
+  }
+
+  //Remove the placeholder spiner & replace with the table
+  var questionSpace = document.getElementById('question_space');
   while(questionSpace.hasChildNodes()) {
     questionSpace.removeChild(questionSpace.firstChild);
   }
+  questionSpace.appendChild(tableContainer);
 
-  var imageDisplay = document.createElement("img");
-  imageDisplay.setAttribute("src", surveyControl.question_path);
-  imageDisplay.setAttribute("width", imgWidth);
-  questionSpace.appendChild(imageDisplay);
-} //END loadImage()
+  //Update the view based on check input
+  $(".image-checkbox").on("click", function (e) {
+    e.preventDefault();
+    var $checkbox = $(this).find('input[type="checkbox"]');
+    $checkbox.prop("checked",!$checkbox.prop("checked"));
 
+    //Get the container ID (label element) of the checkbox "container_#"
+    var clicked = $(this).attr('id');
+    //Parse out the number of the element (array index in surveyControl.image_paths)
+    var num = clicked.substring(clicked.indexOf("_") + 1);
+    num = parseInt(num);
+    //Get the checkbox and the icon elements
+    var checkboxElement = document.getElementById('check_' + num);
+    var iconElement = document.getElementById('sel_' + num);
 
-//enableUserSelect()
-//Function called after appropriate period for question/inspection to enable
-//page-specific user controls to respond to the question
-function enableUserSelect() {
-  var usrBtn = document.getElementById(user_classify);
-  var mlBtn = document.getElementById(ml_classify);
-  usrBtn.setAttribute("class", "btn btn-primary btn-block btn-lg");
-  usrBtn.disabled = false;
-  mlBtn.setAttribute("class", "btn btn-success btn-block btn-lg");
-  mlBtn.disabled = false;
-} //END enableUserSelect()
+    //The item was just checked
+    if (checkboxElement.checked) {
+      //4 items are already selected, so unselect the current and trigger alert
+      if (selectionCount == 4) {
+        $checkbox.prop("checked",!$checkbox.prop("checked"));
+        alert("Select only 4 images. You may deselect other images if desired.");
+        return;
+      }
+      selectionCount++;
+      iconElement.hidden = false;
+      choicesMade.push(num);
+    }
+    //The item was just unchecked
+    else {
+      selectionCount--;
+      iconElement.hidden = true;
+      for (var i = 0; i < choicesMade.length; i++) {
+        if (choicesMade[i] == num)
+          choicesMade.splice(i, 1);
+      }
+    }
 
-
-//selectionUserClassify()
-function selectionUserClassify() {
-  //Set the respond_space informaiton
-  var respondSpace = document.getElementById('respond_space');
-
-  while (respondSpace.hasChildNodes()) {
-    respondSpace.removeChild(respondSpace.firstChild);
-  }
-
-  var textData = document.createElement('h5');
-  textData.innerHTML = "Which option best classifies this image?<br />";
-  respondSpace.appendChild(textData);
-
-  for (var i = 0; i < surveyControl.sel_options.length; i++) {
-    var userSelectBtn = document.createElement("button");
-    userSelectBtn.setAttribute("class", "btn btn-outline-primary btn-block btn-lg");
-    var buttonCall = "executeUserSelection(" + i + ")";
-    userSelectBtn.setAttribute("onclick", buttonCall);
-    var optionId = "classifyButton" + i;
-    userSelectBtn.setAttribute("id", optionId);
-    userSelectBtn.innerHTML = surveyControl.sel_options[i];
-    userSelectBtn.disabled = true;
-    respondSpace.appendChild(userSelectBtn);
-  }
-
-  var br1 = document.createElement("br");
-  var br2 = document.createElement("br");
-  respondSpace.appendChild(br1);
-  respondSpace.appendChild(br2);
-
-  var mlClassifyBtn = document.createElement("button");
-  mlClassifyBtn.disabled = true;
-  mlClassifyBtn.setAttribute("id", ml_classify);
-  mlClassifyBtn.setAttribute("class", "btn btn-outline-success btn-block btn-lg");
-  mlClassifyBtn.setAttribute("onclick", "selectionMLClassify()");
-  mlClassifyBtn.innerHTML = "Model Classify";
-  respondSpace.appendChild(mlClassifyBtn);
-
-  //Enable the buttons for user selection after 3.5 seconds
-  setTimeout(enableClassifySelect, 750);
-} //END selectionUserClassify()
-
-
-//enableClassifySelect()
-//Function called after appropriate period for question/inspection to enable
-//page-specific user controls to respond to the question
-function enableClassifySelect() {
-  var prefix = "classifyButton";
-  for (var i = 0; i < surveyControl.sel_options.length; i++) {
-    var id = prefix + i;
-    document.getElementById(id).setAttribute("class", "btn btn-primary btn-block btn-lg");
-    document.getElementById(id).disabled = false;
-  }
-  document.getElementById('ml_classify').setAttribute("class", "btn btn-success btn-block btn-lg");
-  document.getElementById('ml_classify').disabled = false;
-} //END enableClassifySelect()
-
-
-//selectionMLClassify()
-function selectionMLClassify() {
-  //Set the respond_space informaiton
-  var respondSpace = document.getElementById('respond_space');
-  while (respondSpace.hasChildNodes()) {
-    respondSpace.removeChild(respondSpace.firstChild);
-  }
-
-  var textPrompt = "On a scale of 1 <small class=\"semi_transp\">(very unsure)</small> ";
-  textPrompt += "to 7 <small class=\"semi_transp\">(very sure)</small>, how ";
-  textPrompt += "confident are you that the Model will be correct?";
-  var textData = document.createElement('h5');
-  textData.innerHTML = textPrompt;
-  respondSpace.appendChild(textData);
-  respondSpace.appendChild(document.createElement('br'));
-
-  var divParent = document.createElement('div');
-  divParent.setAttribute("class", "btn-group btn-group-lg");
-
-  for (var i = 1; i < 8; i++) {
-    var btnCall = "fileMLClassify(" + i + ")";
-    var buttonEle = document.createElement('button');
-    buttonEle.setAttribute("type", "button");
-    buttonEle.setAttribute("class", "btn");
-    buttonEle.setAttribute("onclick", btnCall);
-    buttonEle.innerHTML = i;
-    divParent.appendChild(buttonEle);
-  }
-
-  respondSpace.appendChild(divParent);
-
-} //END selectionMLClassify()
-
-
-//fileMLClassify()
-function fileMLClassify(conf) {
-  //Args: 1 for ML classify
-  //      2 Confidence value
-  var args = [1, conf];
-  jQuery.ajax({
-    type:     "POST",
-    url:      '../../support_files/sql_interact.php',
-    dataType: 'json',
-    data:     {functionname: 'get_next_question', arguments: args},
-    error:    function(a, b, c) {
-                console.log("jQuery.ajax could not execute php file.");
-              },
-    success:  function(obj) {
-                if (!('error' in obj)) {
-                  surveyControl = obj;
-                  //Callback
-                  renderNextQuestion();
-                }
-                else {
-                  console.log(obj.error);
-                }
-              }
-  });
-} //END fileMLClassify()
+    //Toggle the class to checked/unchecked as needed
+    $(this).toggleClass('image-checkbox-checked');
+    console.log(choicesMade);
+    evalContinueButton();
+  }); //END onclick function attach
+} //END loadImages()
 
 
 //executeUserSelection()
-function executeUserSelection(val) {
-  //Args: 0 for User classify
-  //      val passed in from button clicked as option selected
-  var args = [0, val];
+function executeUserSelection() {
+  if (selectionCount != 4) {
+    alert("Please select the 4 images you believe most likely to be misidentified by the model.");
+    return;
+  }
+  else {
+    choicesMade.push(seconds);
+  }
   jQuery.ajax({
     type:     "POST",
     url:      '../../support_files/sql_interact.php',
     dataType: 'json',
-    data:     {functionname: 'get_next_question', arguments: args},
+    data:     {functionname: 'get_next_question', arguments: choicesMade},
     error:    function(a, b, c) {
-                console.log("jQuery.ajax could not execute php file.");
+                console.log("executeUserSelection() -> jQuery.ajax could not execute php file.");
               },
     success:  function(obj) {
                 if (!('error' in obj)) {
@@ -292,3 +208,23 @@ function executeUserSelection(val) {
               }
   });
 } //END executeUserSelection()
+
+
+//completeTimer()
+function completeTimer() {
+  timerDone = true;
+  evalContinueButton()
+} //END completeTimer()
+
+
+//evalContinueButton()
+function evalContinueButton() {
+  if (timerDone && selectionCount == 4) {
+    continueButton.setAttribute("style", "");
+    continueButton.disabled = false;
+  }
+  else {
+    continueButton.setAttribute("style", "display: none");
+    continueButton.disabled = true;
+  }
+} //END evalContinueButton()

@@ -19,13 +19,17 @@
     switch ($_POST['functionname']) {
       case 'get_survey_control':
         $result['survey'] = $_SESSION['survey'];
-        $result['question_path'] = $img_source.$_SESSION['exp_data'][$_SESSION['survey']['curr_question']];
-        $result['sel_options'] = $user_sel_opt_name;
+        $image_paths = array();
+        $loop_start = $_SESSION['survey']['curr_question'] * $images_per_question;
+        $loop_end = ($_SESSION['survey']['curr_question'] + 1) * $images_per_question;
+        for ($i = $loop_start; $i < $loop_end; $i++) {
+          array_push($image_paths, $img_source.$_SESSION['exp_data'][$i]);
+        }
+        $result['image_paths'] = $image_paths;
 
         //POST[0] = post_intervention when the user has completed the intervention
         if (strcmp($_POST['arguments'][0], 'post_intervention') == 0) {
           $_SESSION['survey']['intervention_comp'] = true;
-          $_SESSION['survey']['mid_score'] = $_SESSION['survey']['score'];
         }
 
         //If interventions are active, and we have not completed the intervention,
@@ -53,49 +57,53 @@
           exit;
         }
 
-        //Save the data of the user's response to the just-answered question
-        if (!is_null($_POST['arguments']) && !empty($_POST['arguments'])) {
-          //Get the correctness of the response for ML Classification
-          $q_correct_char = substr($_SESSION['exp_data'][$_SESSION['survey']['curr_question']], $ml_indicator_index, 1);
-          $ml_correctness = intval($q_correct_char);
-          //Mod 2 to reduce... 0 == false, 1 == true
-          $ml_correctness = $ml_correctness % 2;
+        // //Save the data of the user's response to the just-answered question
+        // if (!is_null($_POST['arguments']) && !empty($_POST['arguments'])) {
+        //   //Get the correctness of the response for ML Classification
+        //   $q_correct_char = substr($_SESSION['exp_data'][$_SESSION['survey']['curr_question']], $ml_indicator_index, 1);
+        //   $ml_correctness = intval($q_correct_char);
+        //   //Mod 2 to reduce... 0 == false, 1 == true
+        //   $ml_correctness = $ml_correctness % 2;
+        //
+        //   //If ML scored (arguments[0] == 1), udpate score with correctness
+        //   if ($_POST['arguments'][0] == 1 && $ml_correctness) {
+        //     $_SESSION['survey']['score'] += $model_sel_points;
+        //   }
+        //   //If user scored (arguments[0] == 0), update score if their choice matches
+        //   $user_correctness = NULL;
+        //   if ($_POST['arguments'][0] == 0) {
+        //     $q_class_char = substr($_SESSION['exp_data'][$_SESSION['survey']['curr_question']], $user_class_index, 1);
+        //     $user_correctness = intval($q_class_char);
+        //     $user_correctness = $user_correctness % (sizeof($user_sel_opt_name));
+        //     $user_correctness = ($user_correctness == $_POST['arguments'][1]);
+        //     if ($user_correctness) {
+        //       $_SESSION['survey']['score'] += $user_sel_points;
+        //     }
+        //   }
+        //
+        //   $eval_method = "ML";
+        //   $user_confidence = NULL;
+        //   if ($_POST['arguments'][0] == 0) {
+        //     $eval_method = "USER";
+        //   }
+        //   else {
+        //     $user_confidence = $_POST['arguments'][1];
+        //   }
 
-          //If ML scored (arguments[0] == 1), udpate score with correctness
-          if ($_POST['arguments'][0] == 1 && $ml_correctness) {
-            $_SESSION['survey']['score'] += $model_sel_points;
-          }
-          //If user scored (arguments[0] == 0), update score if their choice matches
-          $user_correctness = NULL;
-          if ($_POST['arguments'][0] == 0) {
-            $q_class_char = substr($_SESSION['exp_data'][$_SESSION['survey']['curr_question']], $user_class_index, 1);
-            $user_correctness = intval($q_class_char);
-            $user_correctness = $user_correctness % (sizeof($user_sel_opt_name));
-            $user_correctness = ($user_correctness == $_POST['arguments'][1]);
-            if ($user_correctness) {
-              $_SESSION['survey']['score'] += $user_sel_points;
-            }
-          }
-
-          $eval_method = "ML";
-          $user_confidence = NULL;
-          if ($_POST['arguments'][0] == 0) {
-            $eval_method = "USER";
-          }
-          else {
-            $user_confidence = $_POST['arguments'][1];
-          }
-          //Set the response from the user
-          $response_val = array(
-            'question#' => $_SESSION['survey']['curr_question'],
-            'quest_name' => $_SESSION['exp_data'][$_SESSION['survey']['curr_question']],
-            'correctness' => $ml_correctness,
-            'eval_method' => $eval_method,
-            'user_val' => $user_correctness,
-            'conf_val' => $user_confidence
-          );
-          array_push($_SESSION['survey']['response'], $response_val);
-        }
+        //Set the response from the user
+        $sel_a = ($_SESSION['survey']['curr_question'] * $images_per_question) + $_POST['arguments'][0];
+        $sel_b = ($_SESSION['survey']['curr_question'] * $images_per_question) + $_POST['arguments'][1];
+        $sel_c = ($_SESSION['survey']['curr_question'] * $images_per_question) + $_POST['arguments'][2];
+        $sel_d = ($_SESSION['survey']['curr_question'] * $images_per_question) + $_POST['arguments'][3];
+        $response_val = array(
+          'question#' => $_SESSION['survey']['curr_question'],
+          'selection_a' => $_SESSION['exp_data'][$sel_a],
+          'selection_b' => $_SESSION['exp_data'][$sel_b],
+          'selection_c' => $_SESSION['exp_data'][$sel_c],
+          'selection_d' => $_SESSION['exp_data'][$sel_d],
+          'seconds_taken' => $_POST['arguments'][4]
+        );
+        array_push($_SESSION['survey']['response'], $response_val);
 
         //Increment question counter (how many user has completed)
         $_SESSION['survey']['curr_question']++;
@@ -103,7 +111,40 @@
         //If interventions are active and we've just completed the question count
         //required to trigger them, redirect to the intervention page
         if ($intervention_trigger && $_SESSION['survey']['curr_question'] == $intervention_count) {
-          $result['intervention'] = true;
+          //Get current intervention counts and make best decision about which to assign
+          $intervention_data = array();
+          $stmt = $mysqli->stmt_init();
+          $query = "SELECT * FROM interventions";
+          $stmt->prepare($query);
+          $stmt->execute();
+          $resultSet = $stmt->get_result();
+          if ($resultSet->num_rows > 0) {
+            while ($row = $resultSet->fetch_assoc()) {
+              array_push($intervention_data, $row);
+            }
+          }
+          $lowest_index = 0;
+          $lowest_val = 0;
+          for ($i = 0; $i < sizeof($intervention_data); $i++) {
+            //If the intervention we're evaluating has it's equal share of the
+            //total number of runs, skip past it
+            if ($intervention_data[$i]['count'] == $total_mturk_runs / sizeof($intervention_data)) {
+              continue;
+            }
+            //If this intervention has been used 0 times, use it
+            if ($intervention_data[$i]['count'] == 0) {
+              $lowest_index = $i;
+              break;
+            }
+            //If this intervention is lower than the others, use it
+            if ($intervention_data[$i]['count'] < $lowest_val) {
+              $lowest_val = $intervention_data[$i]['count'];
+              $lowest_index = $i;
+            }
+          }
+          $intervention_name = "../../intervention_".$lowest_index.".php";
+          $_SESSION['intervention_id'] = $lowest_index;
+          $result['intervention'] = $intervention_name;
         }
 
         //If the user completed the total number of listed questions
@@ -113,8 +154,13 @@
 
         //Return the current survey data and question
         $result['survey'] = $_SESSION['survey'];
-        $result['question_path'] = $img_source.$_SESSION['exp_data'][$_SESSION['survey']['curr_question']];
-        $result['sel_options'] = $user_sel_opt_name;
+        $image_paths = array();
+        $loop_start = $_SESSION['survey']['curr_question'] * $images_per_question;
+        $loop_end = ($_SESSION['survey']['curr_question'] + 1) * $images_per_question;
+        for ($i = $loop_start; $i < $loop_end; $i++) {
+          array_push($image_paths, $img_source.$_SESSION['exp_data'][$i]);
+        }
+        $result['image_paths'] = $image_paths;
         break;
 
       case 'file_demographics':

@@ -1,0 +1,144 @@
+@import url(https://fonts.googleapis.com/css?family=Gudea);
+
+html {
+  overflow-y: scroll;
+}
+body {
+  background-color: #282728;
+  height: 100%;
+  font-family: 'Gudea', sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+}
+p, ul, ol {
+  color: #FFFFFF;
+  margin: 0px 0px 16px 0px;
+  font-size: 18px;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: #FFFFFF;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #FFFFFF;
+  margin: 1em 0;
+  padding: 0;
+}
+
+
+/******************************************************************************/
+/* Labels and Inputs */
+.image-checkbox {
+  position: relative;
+	cursor: pointer;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	border: 6px solid transparent;
+	margin-bottom: 0;
+	outline: 0;
+}
+.image-checkbox input[type="checkbox"] {
+	display: none;
+}
+
+.image-checkbox-checked {
+	border-color: rgba(197, 5, 12, 0.95);
+}
+.image-checkbox .fa {
+  position: absolute;
+  color: #FFFFFF;
+  background-color: rgba(197, 5, 12, 0.95);
+  padding: 10px;
+  top: 0;
+  right: 0;
+}
+.image-checkbox-checked .fa {
+  display: block !important;
+}
+
+.copy_code {
+  height: 32px;
+  padding: 0;
+  border: none;
+}
+
+.semi_transp {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/******************************************************************************/
+/* Admin Login and Banner */
+.form {
+  background: rgba(197, 5, 12, 0.95);
+  padding: 40px;
+  max-width: 800px;
+  margin: 40px auto;
+  border-radius: 4px;
+  box-shadow: 7px 7px 10px 2px rgba(150, 5, 12, 0.95);
+}
+.field-wrap {
+  position: relative;
+  margin-bottom: 40px;
+}
+.admin-banner {
+  background: rgba(197, 5, 12, 0.95);
+  text-align: center;
+}
+
+/******************************************************************************/
+/* Image Loading Spinner */
+.fa-spinner {
+  font-size: 24px;
+  color: #FFFFFF;
+}
+
+/******************************************************************************/
+/* BEGIN/CONTINUE Button */
+.btn-outline-danger {
+  color: #FFFFFF;
+  background-color: transparent;
+  background-image: none;
+  border-color: #FFFFFF;
+}
+.btn-outline-danger:not(:disabled):hover {
+  color: #FFFFFF;
+  background-color: rgba(197, 5, 12, 0.95);
+  border-color: rgba(197, 5, 12, 0.95);
+}
+.btn-outline-danger:focus, .btn-outline-danger.focus {
+  box-shadow: 0 0 0 0.2rem #FFFFFF;
+}
+.btn-outline-danger.disabled, .btn-outline-danger:disabled {
+  color: #666666;
+  background-color: transparent;
+  border-color: #505050;
+}
+.btn-outline-danger:not(:disabled):not(.disabled):active, .btn-outline-danger:not(:disabled):not(.disabled).active,
+.show > .btn-outline-danger.dropdown-toggle {
+  color: #FFFFFF;
+  background-color: rgba(197, 5, 12, 0.95);
+  border-color: rgba(197, 5, 12, 0.95);
+}
+.btn-outline-danger:not(:disabled):not(.disabled):active:focus, .btn-outline-danger:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-danger.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem #FFFFFF;
+}
+
+/******************************************************************************/
+/* Make Intervention table use borderless */
+.borderless td, .borderless th {
+    border: none;
+    padding: 1px;
+}
+
+/******************************************************************************/
+/* Make hover action resopond to user for btn-group */
+.btn-group .btn:hover {
+  background-color: rgba(197, 5, 12, 0.95);
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}

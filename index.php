@@ -89,7 +89,7 @@
     <?php include './php_includes/favicon.html'; ?>
 
     <title>UW-Madison Graphics</title>
-    <?php include './assets/css/style.html'; ?>
+    <?php include './assets/css/styleOut.html'; ?>
   </head>
 
   <body>
@@ -131,12 +131,11 @@
             <h3>Experiment Explanation</h3>
             <p>
               Hello, and thank you for agreeing to participate in this study on
-              human understanding of Machine Learning models.
+              human understanding of and interaction with Machine Learning models.
             </p>
             <p>
-              During this brief (5-8 minutes) experiment, please do not click
-              the back button on your browswer: it will not allow you to change
-              your responses questions.
+              During this brief (4-6 minutes) experiment, please <b><u>do not</u></b> click
+              the back button on your browser.
             </p>
 
             <p>
@@ -149,9 +148,9 @@
         <div class="row">
           <div class="col-md-12">
             <ul>
-              <li>There are 2 trials in this experiment</li>
-              <li>In the first trial, you will be presented with 12 unique images</li>
-              <li>The main subject in each image is either a dog or a cat</li>
+              <li>There are 2 trials in this experiment.</li>
+              <li>In the first trial, you will be presented with 16 unique images in table format.</li>
+              <li>The main subject in each image is either a dog or a cat.</li>
 
               <img src="./assets/img/examples/E01W.jpg" height="42px" style="display: inline"/>
               &nbsp;&nbsp;
@@ -159,15 +158,21 @@
               <br /><br /><br />
 
               <li>
-                For each image, select whether to classify the image yourself
-                (determine if it contains a dog or a cat) or to allow
-                a Machine Learning-trained model to classify the image
+                We've trained an image classification model using Machine Learning.<br />
+                <span class="semi_transp">Basically, we have a tiny AI-like tool that determines whether the picture contains a dog or a cat.</span>
               </li>
-              <li>Correct answers that <span style="color: #007BFF">YOU classify are worth 2 points</span></li>
-              <li>Correct answers that the <span style="color: #28A745">Machine Learning model classifies are worth 3 points</span></li>
               <br />
 
-              <li>The Machine Learning model's overall accuracy is 67%</li>
+              <li>
+                Your task is to identify the images you believe the model will <i>incorrectly</i> identify.<br />
+                <span class="semi_transp">In other words, select the pictures you think this AI-like tool will call a dog when it's actually a cat, and vice-versa.</span>
+              </li>
+              <br />
+
+              <li>
+                The Machine Learning model's overall accuracy is 75%.<br />
+                <span class="semi_transp">This means you will need to identify 4 images (out of 16).</span>
+              </li>
             </ul>
           </div> <!-- /column -->
         </div> <!-- /row -->

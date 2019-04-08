@@ -14,7 +14,7 @@
     <?php include './php_includes/favicon.html'; ?>
 
     <title>Admin Login</title>
-    <?php include './assets/css/style.html'; ?>
+    <?php include './assets/css/styleOut.html'; ?>
   </head>
 
   <body>
