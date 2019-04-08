@@ -65,7 +65,7 @@
           <span id="question_space"></span>
         </div> <!-- /column -->
       </div> <!-- /row -->
-      <br /><br />
+      <br />
 
       <!-- Continue button -->
       <div class="row">
