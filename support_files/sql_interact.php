@@ -64,10 +64,10 @@
         $sel_d = ($_SESSION['survey']['curr_question'] * $images_per_question) + $_POST['arguments'][3];
         $response_val = array(
           'question#' => $_SESSION['survey']['curr_question'],
-          'selection_a' => $_SESSION['exp_data'][$sel_a],
-          'selection_b' => $_SESSION['exp_data'][$sel_b],
-          'selection_c' => $_SESSION['exp_data'][$sel_c],
-          'selection_d' => $_SESSION['exp_data'][$sel_d],
+          'selection_a' => "".$_POST['arguments'][0]."^".$_SESSION['exp_data'][$sel_a],
+          'selection_b' => "".$_POST['arguments'][1]."^".$_SESSION['exp_data'][$sel_b],
+          'selection_c' => "".$_POST['arguments'][2]."^".$_SESSION['exp_data'][$sel_c],
+          'selection_d' => "".$_POST['arguments'][3]."^".$_SESSION['exp_data'][$sel_d],
           'seconds_taken' => $_POST['arguments'][4]
         );
         array_push($_SESSION['survey']['response'], $response_val);

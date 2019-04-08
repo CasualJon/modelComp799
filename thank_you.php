@@ -12,14 +12,14 @@
     $q1 = false;
     $q2 = false;
     $q3 = false;
-    $data = "intervention_".$_SESSION['intervention_id'].PHP_EOL;
+    $data = "intervention_".$_SESSION['intervention_id'].",";
     for ($i = 0; $i < sizeof($_SESSION['survey']['response']); $i++) {
       $data .= $_SESSION['survey']['response'][$i]['question#'].",";
       $data .= $_SESSION['survey']['response'][$i]['selection_a'].",";
       $data .= $_SESSION['survey']['response'][$i]['selection_b'].",";
       $data .= $_SESSION['survey']['response'][$i]['selection_c'].",";
       $data .= $_SESSION['survey']['response'][$i]['selection_d'].",";
-      $data .= $_SESSION['survey']['response'][$i]['seconds_taken'].PHP_EOL;
+      $data .= $_SESSION['survey']['response'][$i]['seconds_taken'].",";
     }
     $result_stmt = $mysqli->stmt_init();
     $query = "INSERT INTO responses (internal_identifier, response) VALUES(?, ?)";
