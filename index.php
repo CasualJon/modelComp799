@@ -131,11 +131,11 @@
             <h3>Experiment Explanation</h3>
             <p>
               Hello, and thank you for agreeing to participate in this study on
-              human understanding of and interaction with Machine Learning models.
+              human understanding of, and interaction with, Machine Learning models.
             </p>
             <p>
-              During this brief (4-6 minutes) experiment, please <b><u>do not</u></b> click
-              the back button on your browser.
+              During this brief (2-4 minutes) experiment, please <b><u>do not</u></b> click
+              the back button on your browser. Previous answers cannot be changed.
             </p>
 
             <p>
@@ -245,8 +245,8 @@
 
         <p>
           <u>WILL I BE COMPENSATED FOR MY PARTICIPATION?</u><br />
-          You will receive $1.00 for participating in this study. We expect the
-          study to take at most 10 minutes.
+          You will receive $0.50 for participating in this study. We expect the
+          study to take at most 5 minutes.
         </p>
 
         <p>
