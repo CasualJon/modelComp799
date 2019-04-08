@@ -64,10 +64,6 @@ function renderNextQuestion() {
     return;
   }
 
-  //Set the header information
-  var qNum = surveyControl.survey.curr_question + 1;
-  document.getElementById("question_title").innerHTML = "Trial Number " + qNum;
-
   //Set the question_space information
   var questionSpace = document.getElementById('question_space');
 

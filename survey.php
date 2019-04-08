@@ -52,8 +52,12 @@
 
       <!-- Survey header information (updated by JS) -->
       <div class="row">
-        <div class="col-md-12">
-          <h3><span id="question_title">The Survey</span></h3>
+        <div class="col-md-12 text-center">
+          <br />
+          <p>
+            Select the 4 images you believe that the Machine Learning model will
+            <i>incorrectly</i> identify below.
+          </p>
         </div> <!-- /column -->
       </div> <!-- /row -->
       <hr />
@@ -61,7 +65,6 @@
       <!-- Survey question data -->
       <div class="row">
         <div class="col-md-12 text-center">
-          <p>Select the 4 images you believe that the Machine Learning model will <i>incorrectly</i> identify below.</p>
           <span id="question_space"></span>
         </div> <!-- /column -->
       </div> <!-- /row -->
