@@ -99,9 +99,7 @@
                           if ($dc_int % 2 == 0) {
                             $count++;
                             //Output cat image
-                            echo "<img src=\"".$_SESSION['matrix_directory']."/".$dir_contents[$i]."\" width=\"120\" />";
-                            echo "&nbsp;&nbsp;";
-                            if ($count == 2) echo "<br><br>";
+                            echo "<img src=\"".$_SESSION['matrix_directory']."/".$dir_contents[$i]."\" width=\"120\" style=\"margin: 4px 4px 4px 4px\" />";
                           }
                         }
                       ?>
@@ -121,9 +119,7 @@
                             if ($cio_int %2 == 0) {
                               $count++;
                               //Output cat image
-                              echo "<img src=\"".$_SESSION['matrix_directory']."/".$dir_contents[$i]."\" width=\"120\" />";
-                              echo "&nbsp;&nbsp;";
-                              if ($count == 2) echo "<br><br>";
+                              echo "<img src=\"".$_SESSION['matrix_directory']."/".$dir_contents[$i]."\" width=\"120\" style=\"margin: 4px 4px 4px 4px\" />";
                             }
                           }
                         }
@@ -152,9 +148,7 @@
                             if ($cio_int %2 == 1) {
                               $count++;
                               //Output cat image
-                              echo "<img src=\"".$_SESSION['matrix_directory']."/".$dir_contents[$i]."\" width=\"120\" />";
-                              echo "&nbsp;&nbsp;";
-                              if ($count == 2) echo "<br><br>";
+                              echo "<img src=\"".$_SESSION['matrix_directory']."/".$dir_contents[$i]."\" width=\"120\" style=\"margin: 4px 4px 4px 4px\" />";
                             }
                           }
                         }
