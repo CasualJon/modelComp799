@@ -54,10 +54,10 @@
       <div class="row">
         <div class="col-md-12 text-center">
           <br />
-          <p>
-            Select the 4 images you believe that the Machine Learning model will
-            <i>incorrectly</i> identify below.
-          </p>
+          <h3>
+            Select the 4 images you believe most likely to be <i>incorrectly</i>
+            identified <br /> by a Machine Learning model.
+          </h3>
         </div> <!-- /column -->
       </div> <!-- /row -->
       <hr />
