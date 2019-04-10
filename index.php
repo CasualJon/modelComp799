@@ -19,16 +19,6 @@
   if (!isset($_SESSION['admin']) || $_SESSION['admin'] == 0) {
     $_SESSION['admin'] = 0;
 
-    //If here, connection exists.
-    //Validate that this connection is from MTurk and that this IP Address has not
-    //previously completed a survey. If not from MTruk, check if user is admin
-
-    // $refuri = parse_url($_SERVER['HTTP_REFERER']);
-    // if($refuri['host'] != $localhost_domain && $refuri['host'] != $allowed_ext_refer) {
-    //   header("location: ./admin_login.php");
-    //   exit;
-    // }
-
     //If the connection was sent through MTruk, validate that we've not
     //encountered this person before
     $ip_address = $_SERVER['REMOTE_ADDR'];
@@ -159,12 +149,12 @@
 
               <li>
                 We've trained an image classification model using Machine Learning.<br />
-                <span class="semi_transp">Basically, we have a tiny AI-like tool that determines whether the picture contains a dog or a cat.</span>
+                <span class="semi_transp">Basically, we have an AI-like tool that determines whether the picture contains a dog or a cat.</span>
               </li>
               <br />
 
               <li>
-                Your task is to identify the images you believe the model will <i>incorrectly</i> identify.<br />
+                Your task is to choose the images you believe the Machine Learning model will <i style="color: yellow">incorrectly</i> identify.<br />
                 <span class="semi_transp">In other words, select the pictures you think this AI-like tool will call a dog when it's actually a cat, and vice-versa.</span>
               </li>
               <br />
