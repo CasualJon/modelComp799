@@ -84,7 +84,7 @@
             <hr />
             <br />
             <ul>
-              <li>In this second trial, you will be presented with 12 unique images</li>
+              <li>In this second trial, you will be presented with 16 unique images in table format.</li>
               <li>The main subject in each image is either a dog or a cat.</li>
 
               <img src="./assets/img/examples/E01W.jpg" height="42px" style="display: inline"/>
