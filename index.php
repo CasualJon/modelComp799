@@ -52,9 +52,9 @@
     $ip_stmt->execute();
 
     //Retrieve the interal identifier set into the worker table from last action
-    $query = "SELECT internal_identifier FROM workers WHERE ip_address=?";
+    $query = "SELECT internal_identifier FROM workers WHERE ip_address=? AND start_time=?";
     $ip_stmt->prepare($query);
-    $ip_stmt->bind_param("s", $ip_address);
+    $ip_stmt->bind_param("ss", $ip_address, $curr_time);
     $ip_stmt->execute();
     $resultSet = $ip_stmt->get_result();
     $internal_id = $resultSet->fetch_assoc();
