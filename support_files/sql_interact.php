@@ -131,10 +131,10 @@
         break;
 
       case 'file_demographics':
-        $query = "UPDATE responses SET gender=?, age=? WHERE internal_identifier=?";
+        $query = "UPDATE responses SET gender=?, age=?, comments=? WHERE internal_identifier=?";
         $demo_stmt = $mysqli->stmt_init();
         $demo_stmt->prepare($query);
-        $demo_stmt->bind_param("ssi", $_POST['arguments'][0], $_POST['arguments'][1], $_SESSION['internal_identifier']);
+        $demo_stmt->bind_param("sssi", $_POST['arguments'][0], $_POST['arguments'][1], $_POST['arguments'][2], $_SESSION['internal_identifier']);
         $demo_stmt->execute();
         $demo_stmt->close();
         break;

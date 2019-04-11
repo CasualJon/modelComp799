@@ -56,7 +56,7 @@
           <br />
           <h3>
             Select the 4 images you believe most likely to be <i>incorrectly</i>
-            identified <br /> by a Machine Learning model.
+            identified <br /> by the Machine Learning model that achieves 75% accuracy.
           </h3>
         </div> <!-- /column -->
       </div> <!-- /row -->
@@ -80,6 +80,26 @@
       </div> <!-- /row -->
 
       <?php
+        if ($_SESSION['survey']['intervention_comp']) {
+          switch ($_SESSION['intervention_id']) {
+            case 1:
+              include './php_includes/int_1_reminder.php';
+              break;
+            case 2:
+              include './php_includes/int_2_reminder.php';
+              break;
+            case 3:
+              include './php_includes/int_3_reminder.php';
+              break;
+            case 4:
+              include './php_includes/int_4_reminder.php';
+              break;
+            case 0:
+            default:
+              break;
+          }
+        }
+
         if ($_SESSION['admin'] === 1) {
           echo "<hr /><p>";
           var_dump($_SESSION);

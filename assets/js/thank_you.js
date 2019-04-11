@@ -4,6 +4,7 @@ fetchSurveyControl();
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('gender').onchange = evalForSave;
   document.getElementById('age').onchange = evalForSave;
+  document.getElementById('comments').oninput = evalForSave;
 },false);
 
 
@@ -54,18 +55,23 @@ function copyTextToClipboard() {
 //evalForSave()
 //Check contents of age & gender
 function evalForSave() {
+  //Disable for default, then evaluate conditions
+  document.getElementById("save_button").disabled = true;
+
   if (document.getElementById("age").value != "0" && document.getElementById("gender").value != "0") {
     document.getElementById("save_button").disabled = false;
   }
-  else {
-    document.getElementById("save_button").disabled = true;
+  if (document.getElementById("comments").value != null && document.getElementById("comments"). value != "") {
+    if (document.getElementById("comments").value.trim() != "") {
+      document.getElementById("save_button").disabled = false;
+    }
   }
 } //END evalForSave()
 
 
 //fileDemographics()
 function fileDemographics() {
-  var args = [document.getElementById("gender").value, document.getElementById("age").value];
+  var args = [document.getElementById("gender").value, document.getElementById("age").value, document.getElementById("comments").value];
   jQuery.ajax({
     type:     "POST",
     url:      '../../support_files/sql_interact.php',

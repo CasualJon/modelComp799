@@ -24,7 +24,7 @@
   $intervention_count = 1;
 
   //Number of total expected MTurk worker participants
-  $total_mturk_runs = 40;
+  $total_mturk_runs = 50;
 
   //Max allowable survey time in seconds (3600 = 90 min)
   $max_allowed_time = 3600;

@@ -109,9 +109,9 @@
         </div> <!-- /column -->
       </div> <!-- /row -->
 
+      <!-- Additional, voluntary information -->
       <div class="row">
-        <div class="col-md-4">
-
+        <div class="col-md-5">
           <section id="demographics">
             <h5>Gender</h5>
             <div class="row">
@@ -142,10 +142,16 @@
                 </select>
               <!-- </div> /column -->
             </div> <!-- /row -->
-          </section>
+
+            <h5>Comments?</h5>
+            <div class="row">
+              <textarea class="form-control" id="comments"></textarea>
+            </div> <!-- /row -->
+        </section>
         </div> <!-- /column -->
+        
         <div class="col-md-4 offset-1">
-          <br /><br />
+          <br /><br /><br />
           <button class="btn btn-lg btn-outline-danger" id="save_button" onclick="fileDemographics()" disabled>
             <b style="font-size: 38px">Save</b>
           </button>
@@ -155,7 +161,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <h4>Amazon MTurk HIT Completion Code: </h4>
+          <h4 style="color: yellow">Amazon MTurk HIT Completion Code: </h4>
           <input type="text" class="copy_code" id="hit_comp_code" value=<?php echo "\"".$hit_completion_code."\"" ?> />
           <button type="button" class="btn" onclick="copyTextToClipboard()">Copy Code</button>
           <br /><br />
