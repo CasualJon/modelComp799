@@ -95,7 +95,7 @@
           for ($i = 0; $i < sizeof($intervention_data); $i++) {
             //If the intervention we're evaluating has it's equal share of the
             //total number of runs, skip past it
-            if ($intervention_data[$i] == $total_mturk_runs / sizeof($intervention_data)) {
+            if ($intervention_data[$i] >= $total_mturk_runs / sizeof($intervention_data)) {
               continue;
             }
             //If this intervention has been used 0 times, use it
