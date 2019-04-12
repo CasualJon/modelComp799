@@ -22,9 +22,11 @@
       $data .= $_SESSION['survey']['response'][$i]['seconds_taken'].",";
     }
     $result_stmt = $mysqli->stmt_init();
-    $query = "INSERT INTO responses (internal_identifier, response) VALUES(?, ?)";
+    $query = "INSERT INTO responses (internal_identifier, response, round_one_group) VALUES(?, ?, ?)";
     $result_stmt->prepare($query);
-    $result_stmt->bind_param("is", $_SESSION['internal_identifier'], $data);
+    $group = "A";
+    if (strpos($_SESSION['matrix_directory'], "build/B")) $group = "B";
+    $result_stmt->bind_param("iss", $_SESSION['internal_identifier'], $data, $group);
     $q1 = $result_stmt->execute();
     $result_stmt->close();
 
@@ -149,7 +151,7 @@
             </div> <!-- /row -->
         </section>
         </div> <!-- /column -->
-        
+
         <div class="col-md-4 offset-1">
           <br /><br /><br />
           <button class="btn btn-lg btn-outline-danger" id="save_button" onclick="fileDemographics()" disabled>
