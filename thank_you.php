@@ -124,6 +124,8 @@
                   <option value="Male">Male</option>
                   <option value="TransFemale">TransFemale</option>
                   <option value="TransMale">TransMale</option>
+                  <option value="NonBinary">Non-Binary</option>
+                  <option value="Other">Other</option>
                   <option value="Decline">Prefer not to say</option>
                 </select>
               <!-- </div> /column -->
