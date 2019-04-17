@@ -8,7 +8,7 @@
   // $option = mt_rand(0, 999) % 2;
 
   //Hard coding which build directory gets used in order to equalize number of groups
-  $option = 0;
+  $option = 1;
 
   //Scan the build directory to set the pre-intervention images
   $dir_contents = scandir($build[$option]);
