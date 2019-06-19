@@ -6,22 +6,25 @@
   $allowed_ext_refer = "worker.mturk.com";
 
   //Database informaiton for mysqli access
-  $db_name = "model_understanding_spring19";
+  $db_name = "model_preconception_1";
   $db_user = "phpmyadmin";
   $db_pass = "westdayton";
 
   //Directory information for the images the classifier/user will evaluate
-  $img_source = "./assets/img/pets/";
+  $img_source = "./assets/img/trial/";
   //A and B is an evenly distributed split to ensure even correctness distribution
   //across pre- & post-intervention user selections
   $build_source_A = "./assets/img/build/A";
   $build_source_B = "./assets/img/build/B";
-  $num_questions = 2;
-  $images_per_question = 16;
+  $build_source_C = "./assets/img/build/C";
+  $build_source_D = "./assets/img/build/D";
+  $build_source_E = "./assets/img/build/E";
+  $num_questions = 5;
+  $images_per_question = 9;
 
   //Intervention config: whether/when to show. 0 = before start, 12 = before 13
-  $intervention_trigger = true;
-  $intervention_count = 1;
+  $intervention_trigger = false;
+  $intervention_count = 999;
 
   //Number of total expected MTurk worker participants
   $total_mturk_runs = 100;

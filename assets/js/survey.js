@@ -90,15 +90,15 @@ function loadImages() {
   var tbodyEle = document.createElement('tbody');
   tableEle.appendChild(tbodyEle);
 
-  for (var i = 0; i < 4; i++) {
+  for (var i = 0; i < 3; i++) {
     var thEle = document.createElement('th');
-    thEle.setAttribute("style", "width: 25%");
+    thEle.setAttribute("style", "width: 33%");
     tbodyEle.appendChild(thEle);
     var trEle = document.createElement('tr');
     trEle.setAttribute("class", "text-center");
     tbodyEle.appendChild(trEle);
-    for (var j = 0; j < 4; j++) {
-      var nameAddition = "_" + ((i * 4) + j);
+    for (var j = 0; j < 3; j++) {
+      var nameAddition = "_" + ((i * 3) + j);
       var tdEle = document.createElement('td');
       trEle.appendChild(tdEle);
       var labelEle = document.createElement('label');
@@ -108,7 +108,7 @@ function loadImages() {
       var imgEle = document.createElement('img');
       imgEle.setAttribute("class", "img-fluid");
       imgEle.setAttribute("id", "img" + nameAddition);
-      imgEle.setAttribute("src", surveyControl.image_paths[(i * 4) + j]);
+      imgEle.setAttribute("src", surveyControl.image_paths[(i * 3) + j]);
       labelEle.appendChild(imgEle);
       var inputEle = document.createElement('input');
       inputEle.setAttribute("type", "checkbox");
@@ -148,9 +148,9 @@ function loadImages() {
     //The item was just checked
     if (checkboxElement.checked) {
       //4 items are already selected, so unselect the current and trigger alert
-      if (selectionCount == 4) {
+      if (selectionCount == 1) {
         $checkbox.prop("checked",!$checkbox.prop("checked"));
-        alert("Select only 4 images. You may deselect other images if desired.");
+        alert("Select only 1 image. You may deselect other images if desired.");
         return;
       }
       selectionCount++;
@@ -177,8 +177,8 @@ function loadImages() {
 
 //executeUserSelection()
 function executeUserSelection() {
-  if (selectionCount != 4) {
-    alert("Please select the 4 images you believe most likely to be misidentified by the model.");
+  if (selectionCount != 1) {
+    alert("Please select the image you think most likely to be misidentified by the model.");
     return;
   }
   else {
@@ -215,7 +215,7 @@ function completeTimer() {
 
 //evalContinueButton()
 function evalContinueButton() {
-  if (timerDone && selectionCount == 4) {
+  if (timerDone && selectionCount == 1) {
     continueButton.setAttribute("style", "");
     continueButton.disabled = false;
   }

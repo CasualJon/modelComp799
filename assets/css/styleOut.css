@@ -29,6 +29,17 @@ hr {
 }
 
 /******************************************************************************/
+/* Image configurations */
+.example_img {
+  height: 160px;
+  width: 256px;
+  object-fit: scale-down;
+  margin: 4px;
+  display: inline-block;
+}
+
+
+/******************************************************************************/
 /* Labels and Inputs */
 label {
   position: absolute;

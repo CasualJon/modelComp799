@@ -31,13 +31,13 @@
 
     //We've seen this IP Address before, so reject the user
     if ($resultSet->num_rows > 0) {
-      $worker_data = $resultSet->fetch_assoc();
-      $resultSet->free();
-      $ip_stmt->close();
-      $_SESSION['message'] = "We're sorry, but you can only complete this HIT survey once. This IP Address loaded the survey on ".$worker_data['visit_date'].".";
-      unset($ip_address, $query, $worker_data);
-      header("location: ./error.php");
-      exit;
+      // $worker_data = $resultSet->fetch_assoc();
+      // $resultSet->free();
+      // $ip_stmt->close();
+      // $_SESSION['message'] = "We're sorry, but you can only complete this HIT survey once. This IP Address loaded the survey on ".$worker_data['visit_date'].".";
+      // unset($ip_address, $query, $worker_data);
+      // header("location: ./error.php");
+      // exit;
     }
 
     //Set worker data into the table
@@ -138,30 +138,31 @@
         <div class="row">
           <div class="col-md-12">
             <ul>
-              <li>There are 2 trials in this experiment.</li>
-              <li>In the first trial, you will be presented with 16 unique images in table format.</li>
-              <li>The main subject in each image is either a dog or a cat.</li>
+              <li>There are 4 trials in this experiment.</li>
+              <li>In each trial, you will be presented with 9 unique images in table format.</li>
+              <li>Each trial is themed: the table of images will have the same type of subject (person, microwave, stroller, etc.).</li>
+              <li>The subject(s) in each image will be within bounding boxes.</li>
 
-              <img src="./assets/img/examples/E01W.jpg" height="42px" style="display: inline"/>
-              &nbsp;&nbsp;
-              <img src="./assets/img/examples/L12E.jpg" height="42px" />
-              <br /><br /><br />
+              <img class="example_img" src="./assets/img/examples/person_example.jpg" />
+              <img class="example_img" src="./assets/img/examples/microwave_example.png" />
+              <img class="example_img"  src="./assets/img/examples/stroller_example.png" />
+              <br /><br />
 
               <li>
                 We've trained an image classification model using Machine Learning.<br />
-                <span class="semi_transp">Basically, we have an AI-like tool that determines whether the picture contains a dog or a cat.</span>
+                <span class="semi_transp">Basically, we have an AI-like tool that determines what the subject(s) of the image.</span>
               </li>
               <br />
 
-              <li>
-                Your task is to choose the images you believe the Machine Learning model will <i style="color: yellow">incorrectly</i> identify.<br />
-                <span class="semi_transp">In other words, select the pictures you think this AI-like tool will call a dog when it's actually a cat, and vice-versa.</span>
-              </li>
-              <br />
 
               <li>
-                The Machine Learning model's overall accuracy is 75%.<br />
-                <span class="semi_transp">This means you will need to identify 4 images (out of 16).</span>
+                The Machine Learning model's overall accuracy is about 90%.<br />
+                <span class="semi_transp">This means the model might incorrectly identify 1 image out of the 9 displayed.</span>
+              </li>
+              <br />
+              <li>
+                Your task is to <i style="color: yellow">choose the image you think the Machine Learning model is most likely to get wrong</i>.<br />
+                <span class="semi_transp">In other words, select the picture you think this AI-like tool will incorrectly identify as NOT related to the others it appears with.</span>
               </li>
             </ul>
           </div> <!-- /column -->
@@ -178,7 +179,7 @@
 
         <h6 style="display: inline">Title of the Study: </h6><p>Human Understanding of Machine Learning Models</p>
         <h6 style="display: inline">Principal Investigator: </h6><p>Dr. Michael Gleicher (phone: (608) 263-2874)</p>
-        <h6 style="display: inline">Student Researcher: </h6><p>Jon Cyrus (lab phone (608) 265-2711)</p>
+        <h6 style="display: inline">Researcher: </h6><p>Jon Cyrus (lab phone (608) 265-2711)</p>
 
         <p>
           <u>DESCRIPTION OF THE RESEARCH</u><br />
