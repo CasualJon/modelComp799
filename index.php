@@ -178,8 +178,8 @@
         <br />
 
         <h6 style="display: inline">Title of the Study: </h6><p>Human Understanding of Machine Learning Models</p>
-        <h6 style="display: inline">Principal Investigator: </h6><p>Dr. Michael Gleicher (phone: (608) 263-2874)</p>
-        <h6 style="display: inline">Researcher: </h6><p>Jon Cyrus (lab phone (608) 265-2711)</p>
+        <h6 style="display: inline">Principal Investigator: </h6><p></p>
+        <h6 style="display: inline">Researcher: </h6><p></p>
 
         <p>
           <u>DESCRIPTION OF THE RESEARCH</u><br />
@@ -257,7 +257,7 @@
           You may ask any questions about the research at any time by e-mailing
           the owner of the HIT or by calling the laboratory at (608) 265-2711.
           If you wish to escalate your issue, you may contact the Principal
-          Investigator Dr. Michael Gleicher at (608) 263-2874.
+          Investigator.
         </p>
 
         <p>

@@ -5,8 +5,8 @@
 </p>
 
 <p>
-  Student: Jon Cyrus, Spring 2019<br />
-  Principal Investigator: Mike Gleicher (http://pages.cs.wisc.edu/~gleicher/)
+  Student: F<br />
+  Principal Investigator:
 </p>
 
 <p>

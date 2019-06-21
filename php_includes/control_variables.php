@@ -1,14 +1,14 @@
 <?php
   //The domain this experiement is hosted on
-  $localhost_domain = "quickfeedback.io";
+  $localhost_domain = "";
   //The domain this experiment will allow referral access from
   // $allowed_ext_refer = "worker.mturk.com";
   $allowed_ext_refer = "worker.mturk.com";
 
   //Database informaiton for mysqli access
-  $db_name = "model_preconception_1";
-  $db_user = "phpmyadmin";
-  $db_pass = "westdayton";
+  $db_name = "";
+  $db_user = "";
+  $db_pass = "";
 
   //Directory information for the images the classifier/user will evaluate
   $img_source = "./assets/img/trial/";
