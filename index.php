@@ -255,7 +255,7 @@
         <p>
           <u>WHOM SHOULD I CONTACT IF I HAVE QUESTIONS?</u><br />
           You may ask any questions about the research at any time by e-mailing
-          the owner of the HIT or by calling the laboratory at (608) 265-2711.
+          the owner of the HIT or by calling the laboratory at...
           If you wish to escalate your issue, you may contact the Principal
           Investigator.
         </p>
@@ -264,7 +264,7 @@
           If you are not satisfied with response of research team, have more questions,
           or want to talk with someone about your rights as a research participant,
           you are encouraged to contact the Education and Social/Behavioral Science
-          IRB Office at the University of Wisconsin-Madison at (608) 263-2320.
+          IRB Office at the University of Wisconsin-Madison at...
         </p>
 
         <p>
